@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Открывай меню, заказывай то, что просит душа, и наслаждайся моментом. С Foodtuck каждый прием пищи — это маленький праздник.">
+    <meta name="keywords" content="доставка еды, бургеры, пицца, вок, фастфуд, еда на вынос">
+    <title>Foodtuck - Готовим для вас с душой!🍔</title>
+
+    <!-- links -->
+    <link rel="icon" href="../assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/shop-styles/style.css">
+    
+    <!-- scripts -->
+    <script src="https://kit.fontawesome.com/219b80e1d7.js" crossorigin="anonymous"></script>
+    <script src="/scripts/paginationAndSearch.js"></script>
+    <!-- <script src="/scripts/filter.js"></script> -->
+    <script src="/scripts/addCard.js"></script>
+</head>
+<body>  
+    
+    <!-- header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__block">
+                <a href="#" class="header__logo">
+                    Food<span>tuck</span>
+                </a>
+                <nav class="header__nav">
+                    <ul class="nav__list">
+                        <li><a href="http://127.0.0.1:5500/pages/home.html" class="nav__link active">Home</a></li>
+                        <li><a href="#" class="nav__link">Menu</a></li>
+                        <li><a href="#" class="nav__link">Blog</a></li>
+                        <li><a href="#" class="nav__link">Pages</a></li>
+                        <li><a href="#" class="nav__link">About</a></li>
+                        <li><a href="#" class="nav__link">Shop</a></li>
+                        <li><a href="#" class="nav__link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header__btns">
+                    <a href="#" class="header__icon">
+                        <img src="../assets/icons/magnifier.svg" alt="magnifier">
+                    </a>
+                    <a href="#" class="header__icon">
+                        <img src="../assets/icons/user.svg" alt="user">
+                    </a>
+                    <a href="#" class="header__icon">
+                        <img src="../assets/icons/bag.svg" alt="bag">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- main -->
+    <main class="main"> 
+
+        <!-- intro -->
+        <section class="intro">
+            <div class="container">
+                <div class="intro__block">
+                    <div class="intro__info">
+                        <h2 class="intro__title">Our Shop</h2>
+                        <div class="intro__pages">
+                            <h4 class="intro__page">Home</h4>
+                            <div class="intro__icon">
+                                <img src="/assets/icons/arrow-right.svg" alt="arrow-right">
+                            </div>
+                            <h4 class="intro__page active">Shop</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="menu">
+            <div class="container">
+                <div class="inner">
+                    <div class="menu__left">
+        
+                        <!-- selectors -->
+                        <div class="menu__selectors">
+                            <div class="menu__selector">
+                                <h3 class="selector__type">Sort By :</h3>
+                                <select id="selector">
+                                    <option class="option" value="Newest" selected>Newest</option>
+                                    <option class="option" value="Oldest">Oldest</option>
+                                </select>
+                            </div>
+                            <div class="menu__selector">
+                                <h3 class="selector__type">Show :</h3>
+                                <select id="selector">
+                                    <option class="option" value="Default" selected>Default</option>
+                                    <option class="option" value="Custom">Custom</option>
+                                    <option class="option" value="Compact">Compact</option>
+                                    <option class="option" value="Detailed">Detailed</option>
+                                </select>
+                            </div>
+                        </div>
+                            
+                        <!-- menu-inner -->
+                        <div class="menu__inner">
+                            
+                            <!-- cards -->
+                            <div class="menu__cards">
+                            
+                            </div>
+
+                        </div>
+                    </div>
+        
+                    <div class="menu__right">
+                        <div class="menu__block">
+
+                            <!-- search -->
+                            <div class="menu__search">
+                                <input type="text" id="menu__search-input" class="menu__search-input" placeholder="Search Product">
+                                <button class="menu__search-btn">
+                                    <img src="/assets/icons/magnifier.svg" alt="magnifier">
+                                </button>
+                            </div>
+
+
+                            <!-- category -->
+                            <div class="menu__category">
+                                <h3 class="category__title">Category</h3>
+                                <div class="category__item">
+                                    <input type="checkbox" name="sandwiches" id="sandwiches" value="sandwiches">
+                                    <label for="sandwiches">Sandwiches</label>
+                                </div>
+                                <div class="category__item">
+                                    <input type="checkbox" name="burger" id="burger" value="burger">
+                                    <label for="burger">Burger</label>
+                                </div>
+                                <div class="category__item">
+                                    <input type="checkbox" name="chicken-chup" id="chicken-chup" value="pizza">
+                                    <label for="chicken-chup">Chicken Chup</label>
+                                </div>
+                                <div class="category__item">
+                                    <input type="checkbox" name="drink" id="drink" value="pizza" value="drink">
+                                    <label for="drink">Drink</label>
+                                </div>
+                                <div class="category__item">
+                                    <input type="checkbox" name="pizza" id="pizza" value="pizza">
+                                    <label for="pizza">Pizza</label>
+                                </div>
+                                <div class="category__item">
+                                    <input type="checkbox" name="thi" id="thi" value="thi">
+                                    <label for="thi">Thi</label>
+                                </div>
+                                <div class="category__item">
+                                    <input type="checkbox" name="non-veg" id="non-veg" value="nonveg">
+                                    <label for="non-veg">Non Veg</label>
+                                </div>
+                                <div class="category__item">
+                                    <input type="checkbox" name="uncategorized" id="uncategorized" value="uncategorized">
+                                    <label for="uncategorized">Uncategorized</label>
+                                </div>
+                            </div>
+    
+                            <!-- shop -->
+                            <div class="menu__shop">
+                                <div class="shop__block">
+                                    <div class="shop__info">
+                                        <h4 class="shop__title">Perfect Taste</h4>
+                                        <h3 class="shop__subtitle">Classic Restaurant</h3>
+                                        <h4 class="shop__price">45.00$</h4>
+                                        <a href="#" class="shop__btn">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="menu__filter">
+                                <label class="filter__title">Filter By Price</label>
+                                <div class="filter__wrapper">
+                                    <span id="priceValue">text</span>
+                                    <input type="range" min="0" max="100" value="0" class="filter" id="minPrice" />
+                                    <input type="range" min="0" max="100" value="100" class="filter" id="maxPrice" />
+                                </div>
+                                <div class="filter__prices">
+                                    <span class="filter__price">From $0 to $100</span>
+                                    <a href="#" class="filter__link">Filter</a>
+                                </div>
+                            </div>
+
+
+                            <!-- latest -->
+                            <div class="menu__latest">
+                                <div class="latest__block">
+                                    <h2 class="latest__block-title">Latest Products</h2>
+                                    <div class="latest__cards">
+                                        <div class="latest__card">
+                                            <div class="latest__img">
+                                                <img src="/images/shop-images/latest/latest-img.png" alt="latest-img">
+                                            </div>
+                                            <div class="latest__info">
+                                                <h3 class="latest__title">Pizza</h3>
+                                                <div class="latest__rating">
+                                                    <img src="/assets/icons/star.svg" alt="star">
+                                                    <img src="/assets/icons/star.svg" alt="star">
+                                                    <img src="/assets/icons/star-empty.svg" alt="star-empty">
+                                                    <img src="/assets/icons/star-empty.svg" alt="star-empty">
+                                                    <img src="/assets/icons/star-empty.svg" alt="star-empty">
+                                                </div>
+                                                <span class="latest__price">$35.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="latest__card">
+                                            <div class="latest__img">
+                                                <img src="/images/shop-images/latest/latest-img.png" alt="latest-img">
+                                            </div>
+                                            <div class="latest__info">
+                                                <h3 class="latest__title">Cupcake</h3>
+                                                <div class="latest__rating">
+                                                    <img src="/assets/icons/star.svg" alt="star">
+                                                    <img src="/assets/icons/star.svg" alt="star">
+                                                    <img src="/assets/icons/star-empty.svg" alt="star-empty">
+                                                    <img src="/assets/icons/star-empty.svg" alt="star-empty">
+                                                    <img src="/assets/icons/star-empty.svg" alt="star-empty">
+                                                </div>
+                                                <span class="latest__price">$35.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="latest__card">
+                                            <div class="latest__img">
+                                                <img src="/images/shop-images/latest/latest-img.png" alt="latest-img">
+                                            </div>
+                                            <div class="latest__info">
+                                                <h3 class="latest__title">Cookies</h3>
+                                                <div class="latest__rating">
+                                                    <img src="/assets/icons/star.svg" alt="star">
+                                                    <img src="/assets/icons/star.svg" alt="star">
+                                                    <img src="/assets/icons/star-empty.svg" alt="star-empty">
+                                                    <img src="/assets/icons/star-empty.svg" alt="star-empty">
+                                                    <img src="/assets/icons/star-empty.svg" alt="star-empty">
+                                                </div>
+                                                <span class="latest__price">$35.00</span>
+                                            </div>
+                                        </div>
+                                        <div class="latest__card">
+                                            <div class="latest__img">
+                                                <img src="/images/shop-images/latest/latest-img.png" alt="latest-img">
+                                            </div>
+                                            <div class="latest__info">
+                                                <h3 class="latest__title">Burger</h3>
+                                                <div class="latest__rating">
+                                                    <img src="/assets/icons/star.svg" alt="star">
+                                                    <img src="/assets/icons/star.svg" alt="star">
+                                                    <img src="/assets/icons/star-empty.svg" alt="star-empty">
+                                                    <img src="/assets/icons/star-empty.svg" alt="star-empty">
+                                                    <img src="/assets/icons/star-empty.svg" alt="star-empty">
+                                                </div>
+                                                <span class="latest__price">$35.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- tags -->
+                            <div class="menu__tags">
+                                <div class="tags__block">
+                                    <h3 class="tags__title">Product Tags</h3>
+                                    <div class="tags__group-wrapper">
+                                        <div class="tags__group-1">
+                                            <div class="tags__group-1_inner">
+                                                <a href="#" class="tags__tag">Services</a>
+                                                <a href="#" class="tags__tag">Our Menu</a>
+                                                <a href="#" class="tags__tag">Pizza</a>
+                                            </div>
+                                            <div class="tags__group-1_inner">
+                                                <a href="#" class="tags__tag">Cupcake</a>
+                                                <a href="#" class="tags__tag">Burger</a>
+                                                <a href="#" class="tags__tag">Cookies</a>
+                                            </div>
+                                        </div>
+                                        <div class="tags__group-2">
+                                            <a href="#" class="tags__tag">Our Shop</a>
+                                            <a href="#" class="tags__tag">Tandoori Chicken</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer"></footer>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+@mixin container {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+}
+
+@mixin column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin back-image {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@mixin button-full {
+    font-family: $inter;
+    background-color: $primary-color;
+    padding: 18px 57px;
+    border-radius: 30px;
+    
+    &:active {
+        color: black;
+        background-color: white;
+    }
+}
+
+@mixin button-empty {
+    font-family: $inter;
+    padding: 18px 57px;
+    border: 1px solid $primary-color;
+    border-radius: 30px;
+    
+    &:active {
+        color: white;
+        background-color: $primary-color;
+    }
+}
+
+@mixin title-style {
+    font-family: $great-vibes;
+    font-size: 32px;
+    color: $primary-color;
+    margin-bottom: 8px;
+}
+
+@mixin subtitle-style {
+    span {
+        color: $primary-color;
+    }
+    font-weight: 700;
+    font-size: 48px;
+    font-family: $helvetica;
+}
+
+@mixin description-style {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 32px;
+    font-family: $inter;
+}

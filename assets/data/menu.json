@@ -1,0 +1,397 @@
+[
+    {
+        "title": "Fresh Lime", 
+        "price": 38, 
+        "oldPrice": 45, 
+        "img": "menu-item-1.png" 
+    },
+    {
+        "title": "Chocolate Muffin", 
+        "price": 28, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Burger", 
+        "price": 21, 
+        "oldPrice": 45, 
+        "img": "menu-item-3.png" 
+    },
+    {
+        "title": "Country Burger", 
+        "price": 45, 
+        "img": "menu-item-4.png" 
+    },
+    {
+        "title": "Fresh Lime", 
+        "price": 38, 
+        "img": "menu-item-5.png" 
+    },
+    {
+        "title": "Drink", 
+        "price": 23, 
+        "oldPrice": 45, 
+        "img": "menu-item-6.png" 
+    },
+    {
+        "title": "Pizza", 
+        "price": 43, 
+        "img": "menu-item-7.png" 
+    },
+    {
+        "title": "Cheese Butter", 
+        "price": 10, 
+        "img": "menu-item-8.png" 
+    },
+    {
+        "title": "Sandwiches", 
+        "price": 25, 
+        "img": "menu-item-9.png" 
+    },
+    {
+        "title": "Chicken Chup",
+        "price": 12, 
+        "img": "menu-item-9.png" 
+    },
+    {
+        "title": "Country Burger", 
+        "price": 45, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Drink", 
+        "price": 23, 
+        "oldPrice": 45, 
+        "img": "menu-item-5.png" 
+    },
+    {
+        "title": "Pizza", 
+        "price": 43, 
+        "img": "menu-item-6.png" 
+    },
+    {
+        "title": "Cheese Butter", 
+        "price": 10, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Sandwiches", 
+        "price": 25, 
+        "img": "menu-item-8.png" 
+    },
+    {
+        "title": "Fresh Lime", 
+        "price": 38, 
+        "oldPrice": 45, 
+        "img": "menu-item-1.png" 
+    },
+    {
+        "title": "Chocolate Muffin", 
+        "price": 28, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Burger", 
+        "price": 21, 
+        "oldPrice": 45, 
+        "img": "menu-item-3.png" 
+    },
+    {
+        "title": "Country Burger", 
+        "price": 45, 
+        "img": "menu-item-4.png" 
+    },
+    {
+        "title": "Fresh Lime", 
+        "price": 38, 
+        "img": "menu-item-5.png" 
+    },
+    {
+        "title": "Drink", 
+        "price": 23, 
+        "oldPrice": 45, 
+        "img": "menu-item-6.png" 
+    },
+    {
+        "title": "Pizza", 
+        "price": 43, 
+        "img": "menu-item-7.png" 
+    },
+    {
+        "title": "Cheese Butter", 
+        "price": 10, 
+        "img": "menu-item-8.png" 
+    },
+    {
+        "title": "Sandwiches", 
+        "price": 25, 
+        "img": "menu-item-9.png" 
+    },
+    {
+        "title": "Chicken Chup",
+        "price": 12, 
+        "img": "menu-item-9.png" 
+    },
+    {
+        "title": "Country Burger", 
+        "price": 45, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Drink", 
+        "price": 23, 
+        "oldPrice": 45, 
+        "img": "menu-item-5.png" 
+    },
+    {
+        "title": "Pizza", 
+        "price": 43, 
+        "img": "menu-item-6.png" 
+    },
+    {
+        "title": "Cheese Butter", 
+        "price": 10, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Sandwiches", 
+        "price": 25, 
+        "img": "menu-item-8.png" 
+    },
+    {
+        "title": "Fresh Lime", 
+        "price": 38, 
+        "oldPrice": 45, 
+        "img": "menu-item-1.png" 
+    },
+    {
+        "title": "Chocolate Muffin", 
+        "price": 28, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Burger", 
+        "price": 21, 
+        "oldPrice": 45, 
+        "img": "menu-item-3.png" 
+    },
+    {
+        "title": "Country Burger", 
+        "price": 45, 
+        "img": "menu-item-4.png" 
+    },
+    {
+        "title": "Fresh Lime", 
+        "price": 38, 
+        "img": "menu-item-5.png" 
+    },
+    {
+        "title": "Drink", 
+        "price": 23, 
+        "oldPrice": 45, 
+        "img": "menu-item-6.png" 
+    },
+    {
+        "title": "Pizza", 
+        "price": 43, 
+        "img": "menu-item-7.png" 
+    },
+    {
+        "title": "Cheese Butter", 
+        "price": 10, 
+        "img": "menu-item-8.png" 
+    },
+    {
+        "title": "Sandwiches", 
+        "price": 25, 
+        "img": "menu-item-9.png" 
+    },
+    {
+        "title": "Chicken Chup",
+        "price": 12, 
+        "img": "menu-item-9.png" 
+    },
+    {
+        "title": "Country Burger", 
+        "price": 45, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Drink", 
+        "price": 23, 
+        "oldPrice": 45, 
+        "img": "menu-item-5.png" 
+    },
+    {
+        "title": "Pizza", 
+        "price": 43, 
+        "img": "menu-item-6.png" 
+    },
+    {
+        "title": "Cheese Butter", 
+        "price": 10, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Sandwiches", 
+        "price": 25, 
+        "img": "menu-item-8.png" 
+    },
+    {
+        "title": "Fresh Lime", 
+        "price": 38, 
+        "oldPrice": 45, 
+        "img": "menu-item-1.png" 
+    },
+    {
+        "title": "Chocolate Muffin", 
+        "price": 28, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Burger", 
+        "price": 21, 
+        "oldPrice": 45, 
+        "img": "menu-item-3.png" 
+    },
+    {
+        "title": "Country Burger", 
+        "price": 45, 
+        "img": "menu-item-4.png" 
+    },
+    {
+        "title": "Fresh Lime", 
+        "price": 38, 
+        "img": "menu-item-5.png" 
+    },
+    {
+        "title": "Drink", 
+        "price": 23, 
+        "oldPrice": 45, 
+        "img": "menu-item-6.png" 
+    },
+    {
+        "title": "Pizza", 
+        "price": 43, 
+        "img": "menu-item-7.png" 
+    },
+    {
+        "title": "Cheese Butter", 
+        "price": 10, 
+        "img": "menu-item-8.png" 
+    },
+    {
+        "title": "Sandwiches", 
+        "price": 25, 
+        "img": "menu-item-9.png" 
+    },
+    {
+        "title": "Chicken Chup",
+        "price": 12, 
+        "img": "menu-item-9.png" 
+    },
+    {
+        "title": "Country Burger", 
+        "price": 45, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Drink", 
+        "price": 23, 
+        "oldPrice": 45, 
+        "img": "menu-item-5.png" 
+    },
+    {
+        "title": "Pizza", 
+        "price": 43, 
+        "img": "menu-item-6.png" 
+    },
+    {
+        "title": "Cheese Butter", 
+        "price": 10, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Sandwiches", 
+        "price": 25, 
+        "img": "menu-item-8.png" 
+    },
+    {
+        "title": "Fresh Lime", 
+        "price": 38, 
+        "oldPrice": 45, 
+        "img": "menu-item-1.png" 
+    },
+    {
+        "title": "Chocolate Muffin", 
+        "price": 28, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Burger", 
+        "price": 21, 
+        "oldPrice": 45, 
+        "img": "menu-item-3.png" 
+    },
+    {
+        "title": "Country Burger", 
+        "price": 45, 
+        "img": "menu-item-4.png" 
+    },
+    {
+        "title": "Fresh Lime", 
+        "price": 38, 
+        "img": "menu-item-5.png" 
+    },
+    {
+        "title": "Drink", 
+        "price": 23, 
+        "oldPrice": 45, 
+        "img": "menu-item-6.png" 
+    },
+    {
+        "title": "Pizza", 
+        "price": 43, 
+        "img": "menu-item-7.png" 
+    },
+    {
+        "title": "Cheese Butter", 
+        "price": 10, 
+        "img": "menu-item-8.png" 
+    },
+    {
+        "title": "Sandwiches", 
+        "price": 25, 
+        "img": "menu-item-9.png" 
+    },
+    {
+        "title": "Chicken Chup",
+        "price": 12, 
+        "img": "menu-item-9.png" 
+    },
+    {
+        "title": "Country Burger", 
+        "price": 45, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Drink", 
+        "price": 23, 
+        "oldPrice": 45, 
+        "img": "menu-item-5.png" 
+    },
+    {
+        "title": "Pizza", 
+        "price": 43, 
+        "img": "menu-item-6.png" 
+    },
+    {
+        "title": "Cheese Butter", 
+        "price": 10, 
+        "img": "menu-item-2.png" 
+    },
+    {
+        "title": "Sandwiches", 
+        "price": 25, 
+        "img": "menu-item-1.png" 
+    }
+]

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Открывай меню, заказывай то, что просит душа, и наслаждайся моментом. С Foodtuck каждый прием пищи — это маленький праздник.">
+    <meta name="keywords" content="доставка еды, бургеры, пицца, вок, фастфуд, еда на вынос">
+    <title>Foodtuck - Готовим для вас с душой!🍔</title>
+
+    <!-- links -->
+    <link rel="icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/home-styles/style.css">
+
+    <!-- scripts -->
+    <script src="/scripts/slider.js" defer></script>
+    <script src="/scripts/burger.js" defer></script>
+    <script src="https://kit.fontawesome.com/219b80e1d7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="facer">
+        <button class=""></button>
+        <!-- HEADER -->
+        <header class="header container">
+            <div class="header__burger">
+                <span></span>
+            </div>
+            <nav class="header__nav">
+                <ul class="header__list">
+                    <li><a onclick="window.scrollTo({bottom: 100, behavior: smooth})" class="header__link">Home</a></li>
+                    <li><a href="#about" class="header__link">Menu</a></li>
+                    <li><a href="#" class="header__link">Blog</a></li>
+                    <li><a href="#" class="header__link">Pages</a></li>
+                    <li><a href="#" class="header__link">About<i class="fa-solid fa-angle-down"></i></a></li>
+                    <li><a href="/pages/shop.html" class="header__link">Shop</a></li>
+                    <li><a href="#" class="header__link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <h1 class="header__logo"><span>Food</span>tuck</h1>
+
+            <div class="header__search">
+                <div class="search__field">
+                    <input type="text" placeholder="Search..." class="search__input">
+                    <img src="/assets/icons/magnifier.svg" alt="Поиск" class="search__icon">
+                </div>
+                <img src="/assets/icons/bag.svg" alt="Сумка" class="header__bag-icon">
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero container">
+            <div class="hero__content">
+                <div class="hero__social">
+                    <img src="/assets/icons/line.svg" alt="Линия" class="hero__line">
+                    
+                    <div class="social__list">
+                        <a href="#" class="social__link"><i class="fa-brands fa-facebook-f social__icon"></i></a>
+                        <a href="#" class="social__link"><i class="fa-brands fa-twitter social__icon"></i></a>
+                        <a href="#" class="social__link"><i class="fa-brands fa-pinterest-p social__icon"></i></a>
+                    </div>
+                    
+                    <img src="/assets/icons/line.svg" alt="Линия" class="hero__line">
+                </div>
+
+                <div class="hero__info">
+                    <h2 class="hero__title">Its Quick & Amusing!</h2>
+                    <h3 class="hero__subtitle"><span>Th</span>e Art of speed food Quality</h3>
+                    <p class="hero__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Varius sed pharetra dictum neque massa congue</p>
+                    <button class="hero__button">See Menu</button>
+                </div>
+            </div>
+
+            <img src="/images/home-images/hero/table-with-eggs.svg" alt="Food presentation" class="hero__image">
+        </section>
+    </div>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- ABOUT -->
+        <section class="about container" id="about">
+            <div class="about__content about__content--text">
+                <h2 class="about__title">About us</h2>
+                <h3 class="about__subtitle"><span>We</span>Create the best foody product</h3>
+                <p class="about__description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque bibendum non dui volutpat fringilla bibendum.
+                    Urna, elit augue urna, vitae feugiat pretium donec id elementum. Ultrices mattis sed vitae mus risus. Lacus nisi, et ac dapibus sit eu velit in consequat.
+                </p>
+
+                <ul class="about__list">
+                    <li class="about__item">Lacus nisi, et ac dapibus sit eu velit in consequat.</li>
+                    <li class="about__item">Quisque diam pellentesque bibendum non dui volutpat fringilla</li>
+                    <li class="about__item">Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+                </ul>
+
+                <button class="about__btn">Read More</button>
+            </div>
+
+            <div class="about__content about__content--images">
+                <img src="/images/home-images/about/about-1.png" alt="" class="about__image about__image--main">
+                <div class="about__image-group">
+                    <img src="/images/home-images/about/about-2.png" alt="" class="about__image">
+                    <img src="/images/home-images/about/about-3.png" alt="" class="about__image">
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOD -->
+        <section class="food">
+            <img src="/images/home-images/other/stick-right.svg" class="stick-right">
+            <div class="food__info">
+                <h2 class="food__title">Food Category</h2>
+                <h3 class="food__subtitle"><span>Ch</span>oose Food Item</h3>
+            </div>
+            
+            <div class="food__slider">
+                <div class="food__slider-track">
+                    <img src="/images/home-images/food/food-1.png" class="food__card">
+                    <img src="/images/home-images/food/food-2.png" class="food__card">
+                    <img src="/images/home-images/food/food-3.png" class="food__card">
+                    <img src="/images/home-images/food/food-4.png" class="food__card">
+                    
+                    <img src="/images/home-images/food/food-1.png" class="food__card">
+                    <img src="/images/home-images/food/food-2.png" class="food__card">
+                    <img src="/images/home-images/food/food-3.png" class="food__card">
+                    <img src="/images/home-images/food/food-4.png" class="food__card">
+                </div>
+            </div>
+        </section>
+
+        <!-- CHOOSE -->
+        <section class="choose container">
+            <div class="choose__content choose__content--images">
+                <div class="choose__image-group choose__image-group--top">
+                    <img src="/images/home-images/choose/choose-1.png" alt="" class="choose__image">
+                    <img src="/images/home-images/choose/choose-2.png" alt="" class="choose__image">
+                </div>
+
+                <div class="choose__image-group choose__image-group--bottom">
+                    <div class="choose__image-subgroup choose__image-subgroup--left">
+                        <img src="/images/home-images/choose/choose-3.png" alt="" class="choose__image">
+                        <img src="/images/home-images/choose/choose-4.png" alt="" class="choose__image">
+                    </div>
+                    <div class="choose__image-subgroup choose__image-subgroup--right">
+                        <img src="/images/home-images/choose/choose-5.png" alt="" class="choose__image">
+                        <img src="/images/home-images/choose/choose-6.png" alt="" class="choose__image">
+                    </div>
+                </div>
+            </div>
+
+            <div class="choose__content choose__content--text">
+                <h2 class="choose__title">Why Choose us</h2>
+                <h3 class="choose__subtitle"><span>Ex</span>tra ordinary taste And Experienced</h3>
+                <p class="choose__description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque bibendum non dui volutpat fringilla bibendum.
+                    Urna, elit augue urna, vitae feugiat pretium donec id elementum.
+                </p>
+
+                <div class="choose__cards">
+                    <article class="category-card">
+                        <div class="category-card__icon">
+                            <img src="/assets/icons/burger.svg" class="category-card__image">
+                        </div>
+                        <h4 class="category-card__title">Fast Food</h4>
+                    </article>
+
+                    <article class="category-card">
+                        <div class="category-card__icon">
+                            <img src="/assets/icons/cookie.svg" class="category-card__image">
+                        </div>
+                        <h4 class="category-card__title">Lunch</h4>
+                    </article>
+
+                    <article class="category-card">
+                        <div class="category-card__icon">
+                            <img src="/assets/icons/wine.svg" class="category-card__image">
+                        </div>
+                        <h4 class="category-card__title">Dinner</h4>
+                    </article>
+                </div>
+
+                <div class="choose__experience">    
+                    <h2 class="choose__experience-years">30+</h2>
+                    <div class="choose__experience-info">
+                        <h4 class="choose__experience-title">Years of</h4>
+                        <h3 class="choose__experience-subtitle">Experienced</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLIENTS -->
+        <section class="clients">
+            <div class="clients__inner container">
+                <div class="clients__cards">
+                    <article class="clients__card">
+                        <img src="/assets/icons/chefs.svg" alt="" class="clients__icon">
+                        <h2 class="clients__title">Professional Chefs</h2>
+                        <h3 class="clients__quantity">420</h3>
+                    </article>
+
+                    <article class="clients__card">
+                        <img src="/assets/icons/items.svg" alt="" class="clients__icon">
+                        <h2 class="clients__title">Items Of Food</h2>
+                        <h3 class="clients__quantity">320</h3>
+                    </article>
+
+                    <article class="clients__card">
+                        <img src="/assets/icons/years.svg" alt="" class="clients__icon">
+                        <h2 class="clients__title">Years Of Experienced</h2>
+                        <h3 class="clients__quantity">30+</h3>
+                    </article>
+
+                    <article class="clients__card">
+                        <img src="/assets/icons/customers.svg" alt="" class="clients__icon">
+                        <h2 class="clients__title">Happy Customers</h2>
+                        <h3 class="clients__quantity">220</h3>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- MENU -->
+        <section class="menu container">
+            <h2 class="menu__title">Choose & pick</h2>
+            <h3 class="menu__subtitle"><span>Fr</span>om Our Menu</h3>
+            <nav class="menu__nav">
+                <ul class="menu__list">
+                    <li class="menu__item"><a href="#">Breakfast</a></li>
+                    <li class="menu__item"><a href="#">Lunch</a></li>
+                    <li class="menu__item"><a href="#">Dinner</a></li>
+                    <li class="menu__item"><a href="#">Dessert</a></li>
+                    <li class="menu__item"><a href="#">Drink</a></li>
+                    <li class="menu__item"><a href="#">Snack</a></li>
+                    <li class="menu__item"><a href="#">Soups</a></li>
+                </ul>
+            </nav>
+            <div class="menu__content">
+                <div class="menu__content-item menu__content-item--image">
+                    <img src="/images/home-images/other/table-2.jpg" alt="" width="470" height="370">
+                </div>
+                <div class="menu__content-item menu__content-item--cards">
+                    <div class="menu__cards-container">
+                        <div class="menu__card-group">
+                            <article class="menu__card">
+                                <img src="/images/home-images/menu/menu-1.png" alt="" class="menu__card-image">
+                                <div class="menu__card-info">
+                                    <h4 class="menu__card-title">Lettuce Leaf</h4>
+                                    <p class="menu__card-description">Lacus nisi, et ac dapibus velit in consequat.</p>
+                                    <h3 class="menu__card-price">12.5$</h3>
+                                </div>
+                            </article>
+                            <article class="menu__card">
+                                <img src="/images/home-images/menu/menu-2.png" alt="" class="menu__card-image">
+                                <div class="menu__card-info">
+                                    <h4 class="menu__card-title">Fresh Breakfast</h4>
+                                    <p class="menu__card-description">Lacus nisi, et ac dapibus velit in consequat.</p>
+                                    <h3 class="menu__card-price">14.5$</h3>
+                                </div>
+                            </article>
+                            <article class="menu__card">
+                                <img src="/images/home-images/menu/menu-3.png" alt="" class="menu__card-image">
+                                <div class="menu__card-info">
+                                    <h4 class="menu__card-title">Mild Butter</h4>
+                                    <p class="menu__card-description">Lacus nisi, et ac dapibus velit in consequat.</p>
+                                    <h3 class="menu__card-price">12.5$</h3>
+                                </div>
+                            </article>
+                            <article class="menu__card">
+                                <img src="/images/home-images/menu/menu-4.png" alt="" class="menu__card-image">
+                                <div class="menu__card-info">
+                                    <h4 class="menu__card-title">Fresh Bread</h4>
+                                    <p class="menu__card-description">Lacus nisi, et ac dapibus velit in consequat.</p>
+                                    <h3 class="menu__card-price">12.5$</h3>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="menu__card-group">
+                            <article class="menu__card">
+                                <img src="/images/home-images/menu/menu-5.png" alt="" class="menu__card-image">
+                                <div class="menu__card-info">
+                                    <h4 class="menu__card-title">Glow Cheese</h4>
+                                    <p class="menu__card-description">Lacus nisi, et ac dapibus velit in consequat.</p>
+                                    <h3 class="menu__card-price">12.5$</h3>
+                                </div>
+                            </article>
+                            <article class="menu__card">
+                                <img src="/images/home-images/menu/menu-6.png" alt="" class="menu__card-image">
+                                <div class="menu__card-info">
+                                    <h4 class="menu__card-title">Italian Pizza</h4>
+                                    <p class="menu__card-description">Lacus nisi, et ac dapibus velit in consequat.</p>
+                                    <h3 class="menu__card-price">14.5$</h3>
+                                </div>
+                            </article>
+                            <article class="menu__card">
+                                <img src="/images/home-images/menu/menu-7.png" alt="" class="menu__card-image">
+                                <div class="menu__card-info">
+                                    <h4 class="menu__card-title">Sllice Beef</h4>
+                                    <p class="menu__card-description">Lacus nisi, et ac dapibus velit in consequat.</p>
+                                    <h3 class="menu__card-price">12.5$</h3>
+                                </div>
+                            </article>
+                            <article class="menu__card">
+                                <img src="/images/home-images/menu/menu-8.png" alt="" class="menu__card-image">
+                                <div class="menu__card-info">
+                                    <h4 class="menu__card-title">Mushroom Pizza</h4>
+                                    <p class="menu__card-description">Lacus nisi, et ac dapibus velit in consequat.</p>
+                                    <h3 class="menu__card-price">12.5$</h3>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CHEFS -->
+        <section class="chiefs">
+            <img src="/images/home-images/other/stick-left.svg" class="stick-left">
+            <div class="chiefs__inner container">
+                <h2 class="chiefs__title">Chefs</h2>
+                <h3 class="chiefs__subtitle"><span>Me</span>et Our Chief</h3>   
+                <div class="chiefs__cards">
+                    <img src="/images/home-images/chief/chief-1.png" class="chiefs__card">
+                    <img src="/images/home-images/chief/chief-2.png" class="chiefs__card">
+                    <img src="/images/home-images/chief/chief-3.png" class="chiefs__card">
+                    <img src="/images/home-images/chief/chief-4.png" class="chiefs__card">
+                </div>
+                <button class="chiefs__btn">See More</button>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="testimonials container">
+            <div class="testimonials__block">
+                <img src="/images/home-images/other/flowers.svg" class="flowers">
+                <h2 class="testimonials__title">Testimonials</h2>
+                <h3 class="testimonials__subtitle">What our client are saying</h3>
+                <div class="testimonial">
+                    <img src="/images/home-images/other/client.svg" alt="client" class="testimonial__client-image">
+                    <div class="testimonial__inner">
+                        <img src="/assets/icons/quotes.svg" alt="quotes" class="testimonial__quote-icon">
+                        <p class="testimonial__feedback">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque bibendum non dui volutpat fringilla bibendum. Urna, elit augue urna, vitae feugiat pretium donec id elementum. Ultrices mattis sed vitae mus risus. Lacus nisi, et ac dapibus sit eu velit in consequat.</p>
+                        <div class="testimonial__stars">
+                            <div class="testimonial__star">
+                                <img src="/assets/icons/star.svg" alt="star">
+                            </div>
+                            <div class="testimonial__star">
+                                <img src="/assets/icons/star.svg" alt="star">
+                            </div>
+                            <div class="testimonial__star">
+                                <img src="/assets/icons/star.svg" alt="star">
+                            </div>
+                            <div class="testimonial__star">
+                                <img src="/assets/icons/star.svg" alt="star">
+                            </div>
+                            <div class="testimonial__star">
+                                <img src="/assets/icons/star-empty.svg" alt="star-empty">
+                            </div>
+                        </div>
+                        <h3 class="testimonial__name">Alamin Hasan</h3>
+                        <span class="testimonial__profession">Food Specialist</span>
+                    </div>
+                    <div class="testimonial__dots">
+                        <div class="testimonial__dot active"></div>
+                        <div class="testimonial__dot"></div>
+                        <div class="testimonial__dot"></div>
+                        <div class="testimonial__dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section class="process"> 
+            <div class="process__inner container">
+                <h2 class="process__title">Restaurant Active Process</h2>
+                <h3 class="process__subtitle"><span>We</span> Document Every Food <br>Bean Process untile it is saved</h3>
+                <p class="process__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque <br>bibendum non dui volutpat fringilla bibendum. Urna, elit augue urna, </p>
+                <div class="process__btns">
+                    <button class="process__btn">Read More</button>
+                    <a href="#" class="process__play-btn">
+                        <img src="/assets/icons/play.svg" alt="Play video">
+                    </a>
+                    <span class="process__play-text">Play Video</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG -->
+        <section class="blog container">
+            <h2 class="blog__title">Blog Post</h2>
+            <h3 class="blog__subtitle">Latest News & Blog</h3>
+            <div class="blog__cards">
+                <article class="blog__card">
+                    <img src="/images/home-images/blog/blog-1.png" alt="">
+                    <div class="blog__content">
+                        <h5 class="blog__card-title">10 February 2022 </h5>
+                        <h4 class="blog__card-subtitle">Pellentesque Non Efficitur Mi Aliquam Convallis Mi Quis</h4>
+                        <div class="blog__card-btns">
+                            <a href=""class="blog__card-btns_learn">Learn More</a>
+                            <div class="blog__card-btns_group">
+                                <a href="#"><img src="/assets/icons/like.svg" alt=""></a>
+                                <a href="#"><img src="/assets/icons/comment.svg" alt=""></a>
+                                <a href="#"><img src="/assets/icons/share.svg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="blog__card">
+                    <img src="/images/home-images/blog/blog-2.png" alt="">
+                    <div class="blog__content">
+                        <h5 class="blog__card-title">10 February 2022 </h5>
+                        <h4 class="blog__card-subtitle">Morbi Sodales Tellus Elit, In Blandit Risus Suscipit A</h4>
+                        <div class="blog__card-btns">
+                            <a href=""class="blog__card-btns_learn">Learn More</a>
+                            <div class="blog__card-btns_group">
+                                <a href="#"><img src="/assets/icons/like.svg" alt=""></a>
+                                <a href="#"><img src="/assets/icons/comment.svg" alt=""></a>
+                                <a href="#"><img src="/assets/icons/share.svg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="blog__card">
+                    <img src="/images/home-images/blog/blog-3.png" alt="">
+                    <div class="blog__content">
+                        <h5 class="blog__card-title">10 February 2022 </h5>
+                        <h4 class="blog__card-subtitle">Curabitur rutrum velit ac congue malesuada</h4>
+                        <div class="blog__card-btns">
+                            <a href=""class="blog__card-btns_learn">Learn More</a>
+                            <div class="blog__card-btns_group">
+                                <a href="#"><img src="/assets/icons/like.svg" alt=""></a>
+                                <a href="#"><img src="/assets/icons/comment.svg" alt=""></a>
+                                <a href="#"><img src="/assets/icons/share.svg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- SUPPORT -->
+        <section class="support">
+            <div class="support__left">
+                <h3 class="support__left-title"><span>St</span>ill You Need Our Support?</h3>
+                <p class="support__left-description">Don't wait make a smart & logical quote here. Its pretty easy.</p>
+            </div>
+
+            <div class="support__right">
+                <div class="support__right-email">
+                    <input type="text" placeholder="Enter your Email" class="support__right-email_input" required>
+                    <button class="support__right-email_btn">Subscribe Now</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer__top">
+            <div class="footer__top-inner container">
+                <div class="footer__about">
+                    <h3 class="footer__about-title">About Us.</h3>
+                    <p class="footer__about-description">Corporate clients and leisure travelers has been relying on Groundlink for dependab safe, and professional chauffeured car service in major cities across World.</p>
+                    <div class="footer__about-schedule">
+                        <img src="/assets/icons/clock.svg" alt="">
+                        <div class="footer__about-schedule_info">
+                            <h4 class="footer__about-schedule_title">Opening Houres</h4>
+                            <p class="footer__about-schedule_hours">Mon - Sat(8.00 - 6.00)</p>
+                            <p class="footer__about-schedule_hours">Sunday - Closed</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__links">
+                    <h4 class="footer__links-title">Useful Links</h4>
+                    <ul class="footer__links-list">
+                        <li><a href="" class="footer__links-link">About</a></li>
+                        <li><a href="" class="footer__links-link">News</a></li>
+                        <li><a href="" class="footer__links-link">Partners</a></li>
+                        <li><a href="" class="footer__links-link">Team</a></li>
+                        <li><a href="" class="footer__links-link">Menu</a></li>
+                        <li><a href="" class="footer__links-link">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4 class="footer__links-title">Help?</h4>
+                    <ul class="footer__links-list">
+                        <li><a href="" class="footer__links-link">FAQ</a></li>
+                        <li><a href="" class="footer__links-link">Term & conditions</a></li>
+                        <li><a href="" class="footer__links-link">Reporting</a></li>
+                        <li><a href="" class="footer__links-link">Documentation</a></li>
+                        <li><a href="" class="footer__links-link">Support Policy</a></li>
+                        <li><a href="" class="footer__links-link">Privacy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__posts">
+                    <h4 class="footer__posts-title">Recent Post</h4>
+                    <div class="footer__posts-post">
+                        <img src="/images/home-images/footer/footer-1.png" alt="">
+                        <div class="footer__posts-post_info">
+                            <span>20 Feb 2022</span>
+                            <h5>Keep Your Business</h5>
+                        </div>
+                    </div>
+                    <div class="footer__posts-post">
+                        <img src="/images/home-images/footer/footer-2.png" alt="">
+                        <div class="footer__posts-post_info">
+                            <span>20 Feb 2022</span>
+                            <h5>Keep Your Business</h5>
+                        </div>
+                    </div>
+                    <div class="footer__posts-post">
+                        <img src="/images/home-images/footer/footer-3.png" alt="">
+                        <div class="footer__posts-post_info">
+                            <span>20 Feb 2022</span>
+                            <h5>Keep Your Business</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer__bottom">
+            <div class="footer__bottom-inner container">
+                <h2 class="footer__copyright">Copyright © 2022 by Ayeman. All Rights Reserved.</h2>
+                <div class="footer__socials">
+                    <a href="#">
+                        <div class="footer__socials-link">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="footer__socials-link">
+                            <i class="fa-brands fa-twitter"></i>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="footer__socials-link">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="footer__socials-link">
+                            <i class="fa-brands fa-youtube"></i>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="footer__socials-link">
+                            <i class="fa-brands fa-pinterest"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div> 
+        <img src="/images/home-images/footer/leaf.svg" class="leaf">
+    </footer>
+</body>
+</html>
