@@ -791,7 +791,6 @@ body {
 
         &__btns {
             @include flex-center;
-
             a {
                 margin: 0 12px 0 24px;
                 @include flex-center;
@@ -800,9 +799,13 @@ body {
                 border-radius: 50%;
             }
         }
-
+        
         &__btn {
             @include button-empty;
+            transition: $transition;
+            &:hover {
+                background-color: $primary-color;
+            }
         }
 
         &__play-text {

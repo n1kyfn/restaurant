@@ -963,6 +963,12 @@ body {
   color: white;
   background-color: #FF9F0D;
 }
+.main .process__btn {
+  transition: all 0.4s ease-in-out;
+}
+.main .process__btn:hover {
+  background-color: #FF9F0D;
+}
 .main .process__play-text {
   font-weight: 700;
 }
