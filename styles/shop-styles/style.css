@@ -225,14 +225,14 @@ legend {
   display: flex;
   align-items: center;
 }
+.main .menu {
+  margin: 120px 0;
+}
 .main .menu .inner {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24px;
-}
-.main .menu {
-  margin: 120px 0;
 }
 .main .menu__left {
   display: flex;
@@ -525,6 +525,11 @@ legend {
   border-bottom-color: #FF9F0D;
 }
 
+.footer {
+  color: white;
+  margin-top: 64px;
+  background-color: #0D0D0D;
+}
 .footer .support {
   background-color: #0D0D0D;
   border-bottom: 1px solid #FF9F0D;
@@ -567,11 +572,6 @@ legend {
   color: #FF9F0D;
   padding: 16px 24px;
   background-color: white;
-}
-.footer {
-  color: white;
-  margin-top: 64px;
-  background-color: #0D0D0D;
 }
 .footer__top {
   margin-bottom: 50px;

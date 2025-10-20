@@ -1,4 +1,4 @@
-// slider
+// SLIDER
 document.addEventListener('DOMContentLoaded', () => {
     const sliderTrack = document.querySelector('.food__slider-track');
     const originalItems = Array.from(sliderTrack.children);

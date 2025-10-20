@@ -1,15 +1,20 @@
-// Import modules
+// =============================================================================
+// IMPORTS
+// =============================================================================
+
+// Basic styles
 @import "../basic/reset";
 @import "../basic/variables";
 @import "../basic/mixins";
 
-// Import fonts
+// Google Fonts
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inder&display=swap");
 
-/* =========================================================
-   KEYFRAMES
-========================================================= */
+// =============================================================================
+// KEYFRAMES ANIMATIONS
+// =============================================================================
+
 @keyframes scroll-horizontal {
     0% {
         transform: translateX(0);
@@ -27,6 +32,7 @@
         top: 0;
     }
 }
+
 @keyframes leftRight {
     0% {
         left: -400px;
@@ -35,6 +41,7 @@
         left: 0;
     }
 }
+
 @keyframes downUp {
     0% {
         bottom: -700px;
@@ -44,9 +51,10 @@
     }
 }
 
-/* =========================================================
-   BASE STYLES
-========================================================= */
+// =============================================================================
+// BASE STYLES
+// =============================================================================
+
 * {
     overflow-x: hidden;
 }
@@ -56,6 +64,7 @@ body {
     color: white;
 }
 
+// Text selection styling
 ::selection {
     color: white;
     background-color: $primary-color;
@@ -65,9 +74,10 @@ body {
     @include container;
 }
 
-/* =========================================================
-   HEADER & HERO (FACER)
-========================================================= */
+// =============================================================================
+// HEADER & HERO SECTION
+// =============================================================================
+
 .facer {
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
@@ -76,6 +86,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 
+    // Header styles
     .header {
         position: relative;
         animation: upDown 1s ease-out;
@@ -89,6 +100,7 @@ body {
             padding-bottom: 15px;
         }
 
+        // Mobile burger menu
         &__burger {
             display: none;
             position: relative;
@@ -125,6 +137,7 @@ body {
                 bottom: 0;
             }
 
+            // Active state for burger menu
             &.active {
                 span {
                     transform: scale(0);
@@ -150,7 +163,7 @@ body {
         }
 
         &__link {
-            cursor: pointe;
+            cursor: pointer;
             position: relative;
             color: white;
             font-weight: 400;
@@ -162,8 +175,6 @@ body {
                 color: $primary-color;
             }
         }
-
-
 
         &__logo {
             font-family: $helvetica;
@@ -189,9 +200,10 @@ body {
     }
 }
 
-/* =========================================================
-   SEARCH COMPONENT
-========================================================= */
+// =============================================================================
+// SEARCH COMPONENT
+// =============================================================================
+
 .search__field {
     @include flex-center;
     gap: 15px;
@@ -212,9 +224,10 @@ body {
     }
 }
 
-/* =========================================================
-   HERO SECTION
-========================================================= */
+// =============================================================================
+// HERO SECTION
+// =============================================================================
+
 .hero {
     position: relative;
     animation: downUp 1s ease-out;
@@ -259,15 +272,17 @@ body {
         margin-top: 32px;
         @include button-full;
         transition: $transition;
+        
         &:hover {
-            background-color: #c57702;;
+            background-color: #c57702;
         }
     }
 }
 
-/* =========================================================
-   SOCIAL ICONS (IN HERO)
-========================================================= */
+// =============================================================================
+// SOCIAL ICONS
+// =============================================================================
+
 .social__list {
     margin: 35px 0;
     @include column;
@@ -286,11 +301,16 @@ body {
     }
 }
 
-/* =========================================================
-   MAIN CONTENT
-========================================================= */
+// =============================================================================
+// MAIN CONTENT SECTIONS
+// =============================================================================
+
 .main {
-    /* ABOUT */
+    
+    // =========================================================================
+    // ABOUT SECTION
+    // =========================================================================
+    
     .about {
         margin: $margin-between-sections auto $margin-between-sections;
         display: grid;
@@ -351,13 +371,17 @@ body {
         &__btn {
             @include button-full;
             transition: $transition;
+            
             &:hover {
-                background-color: #c57702;;
+                background-color: #c57702;
             }
         }
     }
 
-    /* FOOD */
+    // =========================================================================
+    // FOOD SECTION
+    // =========================================================================
+    
     .food {
         margin-bottom: $margin-between-sections;
 
@@ -408,7 +432,10 @@ body {
         }
     }
 
-    /* WHY CHOOSE US */
+    // =========================================================================
+    // WHY CHOOSE US SECTION
+    // =========================================================================
+    
     .choose {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -502,34 +529,39 @@ body {
             font-size: 24px;
             color: $gray1;
         }
+        
         &__cards {
             padding-top: 10px;
         }
-        .category {
+        
+        .category-card {
+            transition: $transition;
             
-            &-card {
-                transition: $transition;
-                &__icon {
-                    border-radius: 6px;
-                    padding: 23px;
-                    background-color: $primary-color;
-                }
-                &__title {
-                    margin-top: 9px;
-                    display: flex;
-                    justify-content: center;
-                    font-family: $inter;
-                    font-size: 18px;
-                }
-                &:hover {
-                    cursor: pointer;
-                    transform: translateY(-10px)
-                }
+            &__icon {
+                border-radius: 6px;
+                padding: 23px;
+                background-color: $primary-color;
+            }
+            
+            &__title {
+                margin-top: 9px;
+                display: flex;
+                justify-content: center;
+                font-family: $inter;
+                font-size: 18px;
+            }
+            
+            &:hover {
+                cursor: pointer;
+                transform: translateY(-10px);
             }
         }
     }
 
-    /* CLIENTS */
+    // =========================================================================
+    // CLIENTS SECTION
+    // =========================================================================
+    
     .clients {
         @include back-image;
         background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
@@ -540,6 +572,7 @@ body {
             width: 120px;
             height: 120px;
         }
+        
         &__inner {
             padding: 110px 0;
         }
@@ -566,7 +599,10 @@ body {
         }
     }
 
-    /* MENU */
+    // =========================================================================
+    // MENU SECTION
+    // =========================================================================
+    
     .menu {
         margin-bottom: $margin-between-sections;
 
@@ -595,8 +631,10 @@ body {
             justify-content: space-between;
             margin-bottom: 56px;
         }
-        &__item a{
+        
+        &__item a {
             transition: $transition;
+            
             &:hover {
                 color: $primary-color;
             }
@@ -622,6 +660,7 @@ body {
                         @include column;
                         gap: 4px;
                     }
+                    
                     &-title {
                         font-weight: 700;
                         font-size: 20px;
@@ -641,7 +680,10 @@ body {
         }
     }
 
-    /* CHEFS */
+    // =========================================================================
+    // CHEFS SECTION
+    // =========================================================================
+    
     .chiefs__inner {
         position: relative;
         margin-bottom: $margin-between-sections;
@@ -668,6 +710,7 @@ body {
     .chiefs__btn {
         @include button-empty;
         transition: $transition;
+        
         &:hover {
             background-color: $primary-color;
         }
@@ -679,7 +722,10 @@ body {
         left: 0;
     }
 
-    /* TESTIMONIALS */
+    // =========================================================================
+    // TESTIMONIALS SECTION
+    // =========================================================================
+    
     .testimonials {
         overflow-y: hidden;
         position: relative;
@@ -726,29 +772,35 @@ body {
                 font-weight: 700;
                 font-size: 24px;
             }
+            
             &__feedback {
                 text-align: center;
                 color: $gray2;
                 font-size: 18px;
                 margin: 32px 0;
             }
+            
             &__profession {
                 color: $gray3;
             }
+            
             &__dots {
                 @include flex-center;
-                gap: 7px
+                gap: 7px;
             }
-            &__dot{
+            
+            &__dot {
                 background-color: $primary-color;
                 width: 15px;
                 height: 16px;
                 border-radius: 50%;
                 opacity: 30%;
                 transition: opacity .3s ease;
+                
                 &.active {
                     opacity: 1;
                 }
+                
                 &:hover {
                     opacity: 1;
                 }
@@ -762,7 +814,10 @@ body {
         }
     }
 
-    /* PROCESS */
+    // =========================================================================
+    // PROCESS SECTION
+    // =========================================================================
+    
     .process {
         margin-bottom: $margin-between-sections;
         font-family: $inter;
@@ -791,6 +846,7 @@ body {
 
         &__btns {
             @include flex-center;
+            
             a {
                 margin: 0 12px 0 24px;
                 @include flex-center;
@@ -803,6 +859,7 @@ body {
         &__btn {
             @include button-empty;
             transition: $transition;
+            
             &:hover {
                 background-color: $primary-color;
             }
@@ -813,7 +870,10 @@ body {
         }
     }
 
-    /* BLOG */
+    // =========================================================================
+    // BLOG SECTION
+    // =========================================================================
+    
     .blog {
         margin-bottom: $margin-between-sections;
 
@@ -870,13 +930,17 @@ body {
                     gap: 8px;
                 }
             }
+            
             &:hover {
                 transform: translateY(-10px);
             }
         }
     }
 
-    /* SUPPORT */
+    // =========================================================================
+    // SUPPORT SECTION
+    // =========================================================================
+    
     .support {
         border-bottom: 1px solid $primary-color;
         margin: $margin-between-sections auto 0;
@@ -918,9 +982,10 @@ body {
     }
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
+// =============================================================================
+// FOOTER
+// =============================================================================
+
 .footer {
     position: relative;
     margin-top: 64px;
@@ -945,6 +1010,7 @@ body {
         justify-content: space-between;
     }
 
+    // About section in footer
     &__about {
         width: 24%;
 
@@ -991,6 +1057,7 @@ body {
         }
     }
 
+    // Links section in footer
     &__links-title {
         font-weight: 700;
         font-size: 24px;
@@ -1007,11 +1074,13 @@ body {
     &__links-link {
         font-size: 20px;
         transition: $transition;
+        
         &:hover {
             color: $primary-color;
         }
     }
 
+    // Posts section in footer
     &__posts {
         @include column;
         gap: 19px;
@@ -1040,6 +1109,7 @@ body {
         }
     }
 
+    // Copyright and socials
     &__copyright {
         font-family: $inter;
     }
@@ -1071,17 +1141,23 @@ body {
     }
 }
 
-/* =========================================================
-   RESPONSIVE MEDIA QUERIES
-========================================================= */
+// =============================================================================
+// RESPONSIVE DESIGN
+// =============================================================================
 
-// ======== Mobile (до 728px) =========
+// ===============================
+// MOBILE STYLES (до 728px)
+// ===============================
+
 @media (max-width: 728px) {
+    
+    // Header adjustments for mobile
     .facer {
         .header {
             .header__search {
                 display: none;
             }
+            
             .header__logo {
                 align-items: flex-start;
                 right: 10px;
@@ -1089,8 +1165,9 @@ body {
         }
     }
 
+    // Hero section mobile layout
     .hero {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: 1fr;
 
         &__image {
             display: none;
@@ -1102,10 +1179,13 @@ body {
     }
 
     .main {
+        
+        // About section mobile layout
         .about {
-            grid-template-columns: repeat(1, 1fr);
+            grid-template-columns: 1fr;
         }
 
+        // Food section mobile adjustments
         .food {
             &__card {
                 width: 153px;
@@ -1113,8 +1193,9 @@ body {
             }
         }
 
+        // Choose section mobile layout
         .choose {
-            grid-template-columns: repeat(1, 1fr);
+            grid-template-columns: 1fr;
 
             &__content {
                 text-align: center;
@@ -1122,6 +1203,7 @@ body {
             }
         }
 
+        // Clients section mobile grid
         .clients {
             &__cards {
                 display: grid;
@@ -1139,18 +1221,22 @@ body {
             }
         }
 
+        // Menu section mobile adjustments
         .menu {
             &__item {
                 font-size: 16px;
             }
         }
 
+        // Chiefs section mobile grid
         .chiefs {
             &__cards {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+        
+        // Testimonials mobile typography
         .testimonials {
             .testimonial {
                 &__feedback {
@@ -1162,6 +1248,8 @@ body {
                 }
             }
         }
+        
+        // Process section mobile adjustments
         .process {
             &__title {
                 font-size: 18px;
@@ -1175,17 +1263,21 @@ body {
                 font-size: 16px;
             }
         }
+        
+        // Blog section mobile layout
         .blog {
             &__cards {
                 place-items: center;
                 display: grid;
-                grid-template-columns: repeat(1, 1fr);
+                grid-template-columns: 1fr;
             }
         }
+        
+        // Support section mobile layout
         .support {
             display: grid;
             place-items: center;
-            grid-template-columns: repeat(1, 1fr);
+            grid-template-columns: 1fr;
     
             &__left {
                 margin-bottom: 30px;
@@ -1194,6 +1286,7 @@ body {
         }
     }
 
+    // Footer mobile layout
     .footer {
         &__top-inner {
             display: grid;
@@ -1232,7 +1325,10 @@ body {
     }
 }
 
-// ======== Tablet (728px–1023px) =========
+// ===============================
+// TABLET STYLES (728px–1023px)
+// ===============================
+
 @media (min-width: 728px) and (max-width: 1023px) {
     .support {
         &__left {
@@ -1247,12 +1343,18 @@ body {
     }
 }
 
-// ======== Laptop (до 1120px) =========
+// ===============================
+// LAPTOP STYLES (до 1120px)
+// ===============================
+
 @media (max-width: 1120px) {
+    
+    // Section padding adjustment
     section {
         padding: 30px;
     }
 
+    // Mobile navigation activation
     .facer {
         .header {
             .header__burger {
@@ -1295,6 +1397,7 @@ body {
         }
     }
 
+    // Hero typography adjustments
     .hero {
         &__subtitle {
             font-size: 32px;
@@ -1302,6 +1405,8 @@ body {
     }
 
     .main {
+        
+        // Choose section typography adjustments
         .choose {
             &__experience-years {
                 font-size: 32px;
@@ -1313,6 +1418,7 @@ body {
             }
         }
     
+        // Clients section adjustments
         .clients {
             &__icon {
                 width: 80px;
@@ -1328,6 +1434,7 @@ body {
             }
         }
     
+        // Menu section layout adjustments
         .menu {
             &__content {
                 justify-self: center;
@@ -1342,17 +1449,20 @@ body {
             }
         }
     
+        // Blog section typography
         .blog {
             &__card-subtitle {
                 font-size: 16px;
             }
         }
     
+        // Support section padding
         .support {
             padding: 0 0 40px 0;
         }
     }
 
+    // Footer padding adjustments
     .footer {
         &__bottom-inner {
             padding: 0 0 0 40px;

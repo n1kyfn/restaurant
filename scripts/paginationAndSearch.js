@@ -1,3 +1,4 @@
+// PAGINATION AND SEARCH
 document.addEventListener("DOMContentLoaded", () => {
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
