@@ -60,6 +60,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const totalPages = Math.ceil(filteredCards.length / itemsPerPage);
         const paginationContainer = document.createElement("div");
         paginationContainer.classList.add("pagination");
+        paginationContainer.style.display = "flex";
+        paginationContainer.style.alignItems = "center";
+        paginationContainer.style.justifyContent = "center";
+        paginationContainer.style.gap = "8px";
+
+        const prevButton = document.createElement("button");
+        prevButton.textContent = "<<";
+        prevButton.disabled = currentPage === 0;
+        prevButton.addEventListener("click", () => {
+            if (currentPage > 0) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        });
+        paginationContainer.appendChild(prevButton);
 
         for (let i = 0; i < totalPages; i++) {
             const pageButton = document.createElement("button");
@@ -70,16 +85,38 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             paginationContainer.appendChild(pageButton);
         }
+
+        const nextButton = document.createElement("button");
+        nextButton.textContent = ">>";
+        nextButton.disabled = currentPage === totalPages - 1 || totalPages === 0;
+        nextButton.addEventListener("click", () => {
+            if (currentPage < totalPages - 1) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        });
+        paginationContainer.appendChild(nextButton);
+
         menu.parentNode.insertBefore(paginationContainer, menu.nextSibling);
     }
 
     function updateActiveButtonStates() {
         const pageButtons = document.querySelectorAll(".pagination button");
+        const totalPages = Math.ceil(filteredCards.length / itemsPerPage);
+
         pageButtons.forEach((button, index) => {
-            button.classList.toggle("active", index === currentPage);
-            button.classList.toggle("disable", index !== currentPage);
+            if (index === 0) {
+                button.disabled = currentPage === 0;
+            } else if (index === pageButtons.length - 1) {
+                button.disabled = currentPage === totalPages -1 || totalPages === 0;
+            } else {
+                const pageIndex = index - 1;
+                button.classList.toggle("active", pageIndex === currentPage);
+                button.classList.toggle("disable", pageIndex !== currentPage);
+            }
         });
     }
+
 
     function togglePagination() {
         const pagination = document.querySelector(".pagination");
