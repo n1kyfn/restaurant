@@ -68,6 +68,10 @@
     &__icon {
         width: 24px;
         height: 24px;
+        transition: $transition;
+        &:hover {
+            transform: scale(1.2);
+        }
     }
 }
 
