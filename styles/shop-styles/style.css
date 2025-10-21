@@ -645,7 +645,7 @@ legend {
   gap: 24px;
 }
 .footer__links-link {
-  font-size: 20px;
+  font-size: 16px;
   transition: all 0.4s ease-in-out;
 }
 .footer__links-link:hover {
