@@ -1,3 +1,4 @@
+//  PAGINATION AND SEARCH / LOCALSTORAGE
 document.addEventListener("DOMContentLoaded", () => {
     // размешиваем
     function shuffleArray(array) {
@@ -181,6 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (msg) msg.remove();
     }
 
+    // фильтр по категории
     function applyFilters() {
         const searchTerm = search.value.toLowerCase().trim();
         const selectedCategories = getSelectedCategories();
