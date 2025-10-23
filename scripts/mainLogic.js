@@ -1,10 +1,11 @@
 //  PAGINATION AND SEARCH / LOCALSTORAGE
 document.addEventListener("DOMContentLoaded", () => {
     // размешиваем
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
+
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+            [arr[i], arr[j]] = [arr[j], arr[i]];
         }
     }
 
@@ -23,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
             cards = data.map(item => {
                 const card = document.createElement("div");
                 card.className = "menu__card";
+                card.style.cursor = "pointer";
+
                 card.innerHTML = `
                     <div class="card__img" data-category="${item.title.toLowerCase().trim()}">
                         <img src="/images/shop-images/menu-inner/${item.img}" alt="card-img">
@@ -40,8 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         price: card.querySelector(".card__price").textContent
                     };
 
-                    let items = JSON.parse(localStorage.getItem("items")) || [];
-                    let prices = JSON.parse(localStorage.getItem("prices")) || [];
+                    const items = JSON.parse(localStorage.getItem("items")) || [];
+                    const prices = JSON.parse(localStorage.getItem("prices")) || [];
                         
                     items.push(item.title);
                     prices.push(item.price);
@@ -62,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
         showPage(currentPage);
     });
 
-    
     function showPage(page) {
         const startIndex = page * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
@@ -145,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const pagination = document.querySelector(".pagination");
         if (pagination) {
             if (filteredCards.length > itemsPerPage) {
-                pagination.style.display = "flex";
+                pagination.style.display = "flex";  
             } else {
                 pagination.style.display = "none";
             }
@@ -182,7 +184,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (msg) msg.remove();
     }
 
-    // фильтр по категории
     function applyFilters() {
         const searchTerm = search.value.toLowerCase().trim();
         const selectedCategories = getSelectedCategories();

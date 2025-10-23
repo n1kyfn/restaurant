@@ -8,3 +8,4 @@ document.addEventListener('DOMContentLoaded', () => {
         sliderTrack.appendChild(clone);
     });
 });
+
