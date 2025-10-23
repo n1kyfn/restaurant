@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showPage(currentPage);
     });
 
+    // ----showPage----
     function showPage(page) {
         const startIndex = page * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
@@ -79,13 +80,15 @@ document.addEventListener("DOMContentLoaded", () => {
         updateActiveButtonStates();
         togglePagination();
     }
+    // ----------------
 
+    // ----createPageButtons----
     function createPageButtons() {
         const oldPagination = document.querySelector(".pagination");
         if (oldPagination) oldPagination.remove();
         const totalPages = Math.ceil(filteredCards.length / itemsPerPage);
         const paginationContainer = document.createElement("div");
-        paginationContainer.classList.add("pagination");
+        paginationContainer.classList.add("pagination"); 
 
         // стили для кнопок пагинации
         paginationContainer.style.display = "flex";
@@ -126,7 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         menu.parentNode.insertBefore(paginationContainer, menu.nextSibling);
     }
+    // ----------------------
 
+    // ----updateActiveButtonStates----
     function updateActiveButtonStates() {
         const pageButtons = document.querySelectorAll(".pagination button");
         const totalPages = Math.ceil(filteredCards.length / itemsPerPage);
@@ -142,7 +147,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+    // ---------------------------------
 
+    // ----togglePagination----
     function togglePagination() {
         const pagination = document.querySelector(".pagination");
         if (pagination) {
@@ -153,7 +160,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     }
+    // -------------------------
 
+    // ----getSelectedCategories----
     const search = document.getElementById("menu__search-input");
     const btn = document.querySelector(".menu__search-btn");
     const categoryCheckboxes = document.querySelectorAll(".menu__category input[type=checkbox]");
@@ -163,7 +172,10 @@ document.addEventListener("DOMContentLoaded", () => {
             .filter(chk => chk.checked)
             .map(chk => chk.value.toLowerCase());
     }
+    // -----------------------------
 
+
+    // ----showNoResultsMessage----
     // показываем или убираем "No results found"
     function showNoResultsMessage() {
         let msg = document.querySelector(".no-results");
@@ -179,11 +191,16 @@ document.addEventListener("DOMContentLoaded", () => {
             menu.appendChild(msg);
         }
     }
+    // ------------------------------
+
+    // ----hideNoResultsMessage----
     function hideNoResultsMessage() {
         let msg = document.querySelector(".no-results");
         if (msg) msg.remove();
     }
+    // --------------------------
 
+    // ----applyFilters----
     function applyFilters() {
         const searchTerm = search.value.toLowerCase().trim();
         const selectedCategories = getSelectedCategories();
@@ -208,11 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
         createPageButtons();
         showPage(currentPage);
     }
-
-    btn.addEventListener("click", e => {
-        e.preventDefault();
-        applyFilters();
-    });
+    // -------------------
 
     search.addEventListener("input", applyFilters);
     categoryCheckboxes.forEach(chk => {
