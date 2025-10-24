@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     //--------------------------------------------------------------
-    // функция перемешивания массива (fisher-yates)
+    // функция перемешивания массива
     //--------------------------------------------------------------
     function shuffleArray(arr) {
         for (let i = arr.length - 1; i > 0; i--) {
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     localStorage.setItem("items", JSON.stringify(items))
                     localStorage.setItem("prices", JSON.stringify(prices))
-
+                        
                     alert(`Добавлено в localStorage: ${title}`)
                 })
 
@@ -154,10 +154,11 @@ document.addEventListener("DOMContentLoaded", () => {
             pagination.style.display = filteredCards.length > itemsPerPage ? "flex" : "none"
     }
 
+    const search = document.getElementById("menu__search-input")
+
     //--------------------------------------------------------------
     // выбор категорий через чекбоксы
     //--------------------------------------------------------------
-    const search = document.getElementById("menu__search-input")
     const categoryCheckboxes = document.querySelectorAll(".menu__category input[type=checkbox]")
 
     function getSelectedCategories() {

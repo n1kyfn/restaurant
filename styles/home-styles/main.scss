@@ -1141,6 +1141,7 @@ body {
 // ===============================
 
 @media (max-width: 728px) {
+
     
     // Header adjustments for mobile
     .facer {
@@ -1215,7 +1216,18 @@ body {
         // Menu section mobile adjustments
         .menu {
             &__item {
-                font-size: 16px;
+                font-size: 12px;
+            }
+            &__card {
+                &-title {
+                    font-size: 14px !important;
+                }
+                &-description {
+                    font-size: 12px !important;
+                }
+                &-price {
+                    font-size: 16px !important;
+                }
             }
         }
 
@@ -1274,6 +1286,11 @@ body {
                 margin-bottom: 30px;
                 text-align: center;
             }
+            &__right {
+                &-email {
+                    font-size: 12px;
+                }
+            }
         }
     }
 
@@ -1281,7 +1298,7 @@ body {
     .footer {
         &__top-inner {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1;
         }
 
         &__about {
@@ -1339,6 +1356,9 @@ body {
 // ===============================
 
 @media (max-width: 1120px) {
+    h3 {
+        font-size: 32px !important;
+    }
     
     // Section padding adjustment
     section {
@@ -1433,10 +1453,6 @@ body {
     
             &__content-item--image {
                 display: none;
-            }
-    
-            &__card-price {
-                font-size: 20px;
             }
         }
     
