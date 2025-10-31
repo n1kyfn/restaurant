@@ -115,6 +115,14 @@ legend {
   font-style: normal;
   font-weight: normal;
 }
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 * {
   line-height: 26px;
 }
@@ -182,10 +190,6 @@ legend {
 .header__icon {
   width: 24px;
   height: 24px;
-  transition: all 0.4s ease-in-out;
-}
-.header__icon:hover {
-  transform: scale(1.2);
 }
 
 .main .intro {
@@ -224,6 +228,17 @@ legend {
 .main .intro__icon {
   display: flex;
   align-items: center;
+}
+.main .menu .loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #e0e0e0;
+  border-bottom-color: #FF9F0D;
+  border-radius: 50%;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  animation: rotation 1s linear infinite;
 }
 .main .menu {
   margin: 120px 0;
@@ -445,7 +460,7 @@ legend {
   font-size: 14px;
 }
 .main .menu__filter .filter__prices .filter__price {
-  color: #1E1E1E;
+  color: #1e1e1e;
 }
 .main .menu__filter .filter__prices .filter__link {
   color: #0D0D0D;

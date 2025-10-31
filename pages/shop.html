@@ -15,6 +15,7 @@
     <!-- scripts -->
     <script src="https://kit.fontawesome.com/219b80e1d7.js" crossorigin="anonymous"></script>
     <script src="/scripts/mainLogic.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>  
     
@@ -25,9 +26,6 @@
                 <a href="#" class="header__logo">
                     Food<span>tuck</span>
                 </a>
-                <button class="header__menu-btn mobile-only">
-                    <i class="fas fa-bars"></i>
-                </button>
                 <nav class="header__nav">
                     <ul class="nav__list">
                         <li><a href="http://127.0.0.1:5500/pages/home.html" class="nav__link active">Home</a></li>
@@ -74,7 +72,7 @@
                 </div>
             </div>
         </section>
-
+        
         <!-- menu -->
         <section class="menu">
             <div class="container">
@@ -106,7 +104,7 @@
                             
                             <!-- cards -->
                             <div class="menu__cards">
-                            
+                                <span class="loader"></span>
                             </div>
 
                         </div>
@@ -312,7 +310,7 @@
                     <h3 class="footer__about-title">About Us.</h3>
                     <p class="footer__about-description">Corporate clients and leisure travelers has been relying on Groundlink for dependab safe, and professional chauffeured car service in major cities across World.</p>
                     <div class="footer__about-schedule">
-                        <img src="/assets/icons/clock.svg" alt="">
+                        <img src="/assets/icons/clock.svg" alt="clock">
                         <div class="footer__about-schedule_info">
                             <h4 class="footer__about-schedule_title">Opening Houres</h4>
                             <p class="footer__about-schedule_hours">Mon - Sat(8.00 - 6.00)</p>
@@ -323,44 +321,44 @@
                 <div class="footer__links">
                     <h4 class="footer__links-title">Useful Links</h4>
                     <ul class="footer__links-list">
-                        <li><a href="" class="footer__links-link">About</a></li>
-                        <li><a href="" class="footer__links-link">News</a></li>
-                        <li><a href="" class="footer__links-link">Partners</a></li>
-                        <li><a href="" class="footer__links-link">Team</a></li>
-                        <li><a href="" class="footer__links-link">Menu</a></li>
-                        <li><a href="" class="footer__links-link">Contacts</a></li>
+                        <li><a href="#" class="footer__links-link">About</a></li>
+                        <li><a href="#" class="footer__links-link">News</a></li>
+                        <li><a href="#" class="footer__links-link">Partners</a></li>
+                        <li><a href="#" class="footer__links-link">Team</a></li>
+                        <li><a href="#" class="footer__links-link">Menu</a></li>
+                        <li><a href="#" class="footer__links-link">Contacts</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
                     <h4 class="footer__links-title">Help?</h4>
                     <ul class="footer__links-list">
-                        <li><a href="" class="footer__links-link">FAQ</a></li>
-                        <li><a href="" class="footer__links-link">Term & conditions</a></li>
-                        <li><a href="" class="footer__links-link">Reporting</a></li>
-                        <li><a href="" class="footer__links-link">Documentation</a></li>
-                        <li><a href="" class="footer__links-link">Support Policy</a></li>
-                        <li><a href="" class="footer__links-link">Privacy</a></li>
+                        <li><a href="#" class="footer__links-link">FAQ</a></li>
+                        <li><a href="#" class="footer__links-link">Term & conditions</a></li>
+                        <li><a href="#" class="footer__links-link">Reporting</a></li>
+                        <li><a href="#" class="footer__links-link">Documentation</a></li>
+                        <li><a href="#" class="footer__links-link">Support Policy</a></li>
+                        <li><a href="#" class="footer__links-link">Privacy</a></li>
                     </ul>
                 </div>
 
                 <div class="footer__posts">
                     <h4 class="footer__posts-title">Recent Post</h4>
                     <div class="footer__posts-post">
-                        <img src="/images/home-images/footer/footer-1.png" alt="">
+                        <img src="/images/home-images/footer/footer-1.png" alt="dish">
                         <div class="footer__posts-post_info">
                             <span>20 Feb 2022</span>
                             <h5>Keep Your Business</h5>
                         </div>
                     </div>
                     <div class="footer__posts-post">
-                        <img src="/images/home-images/footer/footer-2.png" alt="">
+                        <img src="/images/home-images/footer/footer-2.png" alt="dish">
                         <div class="footer__posts-post_info">
                             <span>20 Feb 2022</span>
                             <h5>Keep Your Business</h5>
                         </div>
                     </div>
                     <div class="footer__posts-post">
-                        <img src="/images/home-images/footer/footer-3.png" alt="">
+                        <img src="/images/home-images/footer/footer-3.png" alt="dish">
                         <div class="footer__posts-post_info">
                             <span>20 Feb 2022</span>
                             <h5>Keep Your Business</h5>

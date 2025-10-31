@@ -135,12 +135,14 @@ body {
                 }
 
                 &::before {
+                    content: "";
                     width: 75%;
                     top: 50%;
                     transform: rotate(-45deg) translate(0, 50%);
                 }
 
                 &::after {
+                    content: "";
                     width: 75%;
                     top: 50%;
                     transform: rotate(45deg) translate(0, 50%);

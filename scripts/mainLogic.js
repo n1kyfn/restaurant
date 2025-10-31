@@ -17,12 +17,28 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentPage = 0
     let cards = []
     let filteredCards = []
-
+    const loading = document.querySelector(".loader");
+        
+    const params = new URLSearchParams();
+    params.append('isGood', true);
+    params.append('cards', itemsPerPage);
+    const url = new URL('http://127.0.0.1:5500/pages/shop.html');
+    url.search = params.toString();
+    console.log(url.href);
+    
+    
     //--------------------------------------------------------------
     // загрузка данных и создание карточек
     //--------------------------------------------------------------
-    fetch("/assets/data/menu.json")
-        .then(response => response.json())
+    fetch("https://6904539d6b8dabde4963350b.mockapi.io/api/menu-items", {
+        method: "GET",
+        headers: { "content-type": "application/json" },
+    })
+        .then(res => {
+            if (res.ok) {
+                return res.json()
+            }
+        })
         .then(data => {
             shuffleArray(data)
             menu.innerHTML = ""
@@ -54,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     localStorage.setItem("items", JSON.stringify(items))
                     localStorage.setItem("prices", JSON.stringify(prices))
-                        
+
                     alert(`Добавлено в localStorage: ${title}`)
                 })
 
@@ -65,6 +81,19 @@ document.addEventListener("DOMContentLoaded", () => {
             filteredCards = cards.slice()
             createPageButtons()
             showPage(currentPage)
+        })
+        .catch(err => {
+            loading.style.display = "none";
+            const problemMessage = document.createElement("div")
+            problemMessage.textContent = `Error: ${err.message}`
+            Object.assign(problemMessage.style, {
+                display: "flex",
+                width: "900px",
+                fontSize: "30px",
+                fontFamily: "Helvetica",
+                color: "red",
+            })
+            menu.appendChild(problemMessage)
         })
 
     //--------------------------------------------------------------
@@ -204,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
         hideNoResultsMessage()
         cards.forEach(card => (card.style.display = "none"))
 
-        if (filteredCards.length === 0) {
+        if (!filteredCards.length) {
             showNoResultsMessage()
             togglePagination()
             return
@@ -219,6 +248,5 @@ document.addEventListener("DOMContentLoaded", () => {
     // события для поиска и фильтров
     //--------------------------------------------------------------
     search.addEventListener("input", applyFilters)
-
     categoryCheckboxes.forEach(chk => chk.addEventListener("change", applyFilters))
 })

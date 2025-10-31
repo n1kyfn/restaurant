@@ -8,6 +8,18 @@
 @import "../basic/mixins";
 
 // =============================================================================
+// KEYFRAMES ANIMATIONS
+// =============================================================================
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// =============================================================================
 // BASE STYLES
 // =============================================================================
 
@@ -36,34 +48,34 @@
 
 .header {
     background-color: $background-color;
-    
+
     &__block {
         padding: 29px 0;
         @include flex-center;
         justify-content: space-between;
     }
-    
+
     &__logo {
         color: white;
         font-family: $helvetica;
         font-size: 24px;
         font-weight: 700;
-        
+
         span {
             color: $primary-color;
         }
     }
-    
+
     // Navigation styles
     .nav__list {
         display: flex;
         gap: 32px;
     }
-    
+
     .nav__link {
         font-family: $inter;
         font-size: 16px;
-        
+
         // Animated underline effect
         &::after {
             content: "";
@@ -78,25 +90,20 @@
         &:hover::after {
             width: 100%;
         }
-        
+
         &.active {
             font-weight: 700;
         }
     }
-    
+
     &__btns {
         display: flex;
         gap: 16px;
     }
-    
+
     &__icon {
         width: 24px;
         height: 24px;
-        transition: $transition;
-        
-        &:hover {
-            transform: scale(1.2);
-        }
     }
 }
 
@@ -105,44 +112,43 @@
 // =============================================================================
 
 .main {
-    
     // =========================================================================
     // INTRO SECTION
     // =========================================================================
-    
+
     .intro {
         background-image: url("/images/shop-images/intro/intro.jpg");
         @include back-image;
-        
+
         &__block {
             @include flex-center;
             justify-content: center;
             padding: 108px 0;
             color: white;
         }
-        
+
         &__info {
             @include flex-center;
             flex-direction: column;
         }
-        
+
         &__title {
             font-family: $helvetica;
             font-size: 48px;
             font-weight: 700;
             margin-bottom: 20px;
         }
-        
+
         &__pages {
             @include flex-center;
             gap: 4px;
         }
-        
+
         &__page {
             font-size: 20px;
             font-family: $inter;
         }
-        
+
         &__icon {
             @include flex-center;
         }
@@ -151,8 +157,19 @@
     // =========================================================================
     // MENU SECTION
     // =========================================================================
-    
+
     .menu {
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #e0e0e0;
+            border-bottom-color: $primary-color;
+            border-radius: 50%;
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            animation: rotation 1s linear infinite;
+        }
         margin: $margin-between-sections 0;
 
         // Layout container
@@ -165,12 +182,12 @@
         // ------------------------------
         // LAYOUT COLUMNS
         // ------------------------------
-        
+
         &__left {
             @include column;
             align-self: self-start;
         }
-        
+
         &__right {
             @include column;
         }
@@ -178,7 +195,7 @@
         // ------------------------------
         // PRODUCT CARDS GRID
         // ------------------------------
-        
+
         &__cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -189,28 +206,28 @@
             font-family: $inter;
             @include column;
         }
-        
+
         .card {
             &__img {
                 padding-bottom: 8px;
             }
-            
+
             &__title {
                 font-weight: 700;
                 font-size: 18px;
             }
-            
+
             &__prices {
                 @include flex-center;
                 gap: 11px;
             }
-            
+
             &__price {
                 color: $primary-color;
                 font-size: 16px;
             }
         }
-        
+
         // No results message
         &__inner {
             .no-results {
@@ -222,7 +239,7 @@
                 font-size: 30px;
             }
         }
-        
+
         .crossed-out {
             color: $gray3;
             text-decoration: line-through;
@@ -231,7 +248,7 @@
         // ------------------------------
         // PAGINATION
         // ------------------------------
-        
+
         .pagination {
             text-align: center;
             margin-top: 20px;
@@ -243,7 +260,7 @@
             padding: 13px 21px;
             margin: 0 5px;
             border: 2px solid $gray6;
-            
+
             &.active {
                 border: none;
                 color: white;
@@ -254,7 +271,7 @@
         // ------------------------------
         // SIDEBAR BLOCK
         // ------------------------------
-        
+
         &__block {
             @include column;
             gap: 24px;
@@ -267,34 +284,34 @@
         // ------------------------------
         // SELECTORS (Sorting & Filtering)
         // ------------------------------
-        
+
         &__selectors {
             padding-bottom: 24px;
             @include flex-center;
             gap: 33px;
             font-family: $inter;
         }
-        
+
         &__selector {
-            @include flex-center;          
-            gap: 15px;  
+            @include flex-center;
+            gap: 15px;
         }
-        
+
         .selector__type {
             font-size: 20px;
-        }   
-        
+        }
+
         #selector {
             border-radius: 7px;
             padding: 10px 18px;
             border: 1px solid $gray5;
             color: $gray4;
-            
+
             &:hover {
                 cursor: pointer;
             }
         }
-        
+
         .option {
             color: black;
         }
@@ -302,18 +319,18 @@
         // ------------------------------
         // SEARCH COMPONENT
         // ------------------------------
-        
+
         &__search {
             display: flex;
-            
+
             &-input {
                 font-family: $inter;
                 padding: 11px 30px 11px 20px;
                 width: 202px;
-                background-color: #FF9F0D1A;
+                background-color: #ff9f0d1a;
                 color: $gray3;
             }
-            
+
             &-btn {
                 padding: 14px;
                 width: 47px;
@@ -325,7 +342,7 @@
         // ------------------------------
         // CATEGORY FILTER
         // ------------------------------
-        
+
         .category {
             &__title {
                 font-family: $helvetica;
@@ -333,7 +350,7 @@
                 font-size: 20px;
                 padding-bottom: 24px;
             }
-            
+
             &__item {
                 color: $gray1;
                 font-family: $helvetica;
@@ -344,24 +361,24 @@
         // ------------------------------
         // SHOP PROMO BLOCK
         // ------------------------------
-        
+
         .shop {
             &__block {
                 width: 248px;
                 background-image: url("/images/shop-images/menu-shop/shop-img.png");
                 @include back-image;
             }
-            
+
             &__info {
                 padding: 29px 44px 31px 23px;
                 color: white;
             }
-            
+
             &__title {
                 font-family: $inter;
                 font-weight: 700;
             }
-            
+
             &__subtitle {
                 padding-top: 4px;
                 font-family: $helvetica;
@@ -369,20 +386,20 @@
                 font-weight: 700;
                 margin-bottom: 13px;
             }
-            
+
             &__price {
                 font-family: $inter;
                 color: $primary-color;
                 font-weight: 700;
                 margin-bottom: 109px;
             }
-            
+
             &__btn {
                 width: 106px;
                 position: relative;
                 display: flex;
                 font-family: $inter;
-                
+
                 &::after {
                     position: absolute;
                     content: url("/assets/icons/sumbit-right.svg");
@@ -396,7 +413,7 @@
         // ------------------------------
         // PRICE FILTER
         // ------------------------------
-        
+
         &__filter {
             .filter__title {
                 font-family: $helvetica;
@@ -448,9 +465,9 @@
                 font-size: 14px;
 
                 .filter__price {
-                    color: #1E1E1E;
+                    color: #1e1e1e;
                 }
-                
+
                 .filter__link {
                     color: $background-color;
                 }
@@ -460,17 +477,17 @@
         // ------------------------------
         // LATEST PRODUCTS
         // ------------------------------
-        
+
         .latest {
             &__block {
                 font-family: $helvetica;
-                
+
                 &-title {
                     font-weight: 700;
                     font-size: 20px;
                 }
             }
-            
+
             &__cards {
                 padding-top: 24px;
                 @include column;
@@ -485,15 +502,15 @@
                 gap: 15px;
                 @include flex-center;
             }
-            
+
             &__title {
                 color: $gray2;
                 padding-bottom: 8px;
             }
-            
+
             &__rating {
                 display: flex;
-                
+
                 img {
                     width: 10px;
                     height: 9px;
@@ -508,7 +525,7 @@
         // ------------------------------
         // TAGS CLOUD
         // ------------------------------
-        
+
         .tags {
             &__title {
                 font-family: $helvetica;
@@ -526,13 +543,13 @@
             &__group-1 {
                 @include column;
                 gap: 16px;
-                
+
                 &_inner {
                     @include flex-center;
                     gap: 16px;
                 }
             }
-            
+
             &__group-2 {
                 @include flex-center;
                 gap: 16px;
@@ -542,8 +559,8 @@
                 font-family: $inter;
                 color: $gray2;
                 border-bottom: 1px solid $gray6;
-                transition: all .3s ease;
-                
+                transition: all 0.3s ease;
+
                 &:hover {
                     cursor: pointer;
                     color: $primary-color;
@@ -574,16 +591,16 @@
         justify-content: space-between;
         max-width: 1170px;
         width: 100%;
-    
+
         &__left-title {
             @include subtitle-style;
             margin-bottom: 17px;
         }
-    
+
         &__left-description {
             font-family: $inter;
         }
-    
+
         &__right-email {
             border-radius: 4px;
             font-family: $inter;
@@ -594,11 +611,11 @@
             max-width: 459px;
             width: 100%;
         }
-    
+
         &__right-email_input {
             padding-right: 24px;
         }
-    
+
         &__right-email_btn {
             color: $primary-color;
             padding: 16px 24px;
@@ -690,7 +707,7 @@
     &__links-link {
         font-size: 16px;
         transition: $transition;
-        
+
         &:hover {
             color: $primary-color;
         }
