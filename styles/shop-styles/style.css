@@ -142,6 +142,11 @@ legend {
   background-color: #FF9F0D;
 }
 
+button:disabled {
+  cursor: default;
+  background-color: #F2F2F2;
+}
+
 .header {
   background-color: #0D0D0D;
 }
@@ -229,17 +234,6 @@ legend {
   display: flex;
   align-items: center;
 }
-.main .menu .loader {
-  width: 48px;
-  height: 48px;
-  border: 5px solid #e0e0e0;
-  border-bottom-color: #FF9F0D;
-  border-radius: 50%;
-  display: flex;
-  justify-items: center;
-  align-items: center;
-  animation: rotation 1s linear infinite;
-}
 .main .menu {
   margin: 120px 0;
 }
@@ -259,9 +253,21 @@ legend {
   flex-direction: column;
 }
 .main .menu__cards {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+}
+.main .menu__cards .loader {
+  position: absolute;
+  top: 50px;
+  right: 50%;
+  width: 48px;
+  height: 48px;
+  border: 5px solid #e0e0e0;
+  border-bottom-color: #FF9F0D;
+  border-radius: 50%;
+  animation: rotation 1s linear infinite;
 }
 .main .menu__card {
   font-family: "Inter", sans-serif;
