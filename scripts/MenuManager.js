@@ -3,10 +3,11 @@
 import Card from "./Card.js";
 import Paginator from "./Paginator.js";
 import StorageManager from "./StorageManager.js";
+import ProductPage from "./ProductPage.js";
 
 export default class MenuManager {
     /**
-     * 
+     *
      * @param {menuSelector} - ".menu__cards"
      * @param {loaderSelector} - ".loader"
      * @param {searchSelector} - "#menu__search-input"
@@ -17,7 +18,7 @@ export default class MenuManager {
         this.loading = document.querySelector(loaderSelector);
         this.search = document.querySelector(searchSelector);
         this.categoryCheckboxes = document.querySelectorAll(categorySelector);
-
+        this.productPage = new ProductPage();
         this.itemsPerPage = 15;
         this.currentPage = 0;
         this.cards = [];
@@ -51,9 +52,7 @@ export default class MenuManager {
 
     async updateCardsAndPagination() {
         const filteredData = await this.filterSearchAndCategory();
-        console.log(filteredData.length);
         this.hideNoResultsMessage();
-        // this.shuffleArray(filteredData);
         this.menu.innerHTML = "";
         this.cards = filteredData.map(item => {
             const card = new Card(item);
@@ -61,6 +60,7 @@ export default class MenuManager {
             this.menu.appendChild(card.element);
             return card;
         });
+            
         this.filteredCards = [...this.cards];
 
         this.currentPage = 0;
@@ -76,21 +76,12 @@ export default class MenuManager {
     }
 
     /**
-     * 
-     * @param {arr} - shuffle data array  
-     */
-    // shuffleArray(arr) {
-    //     for (let i = arr.length - 1; i > 0; i--) {
-    //         const j = Math.floor(Math.random() * (i + 1));
-    //         [arr[i], arr[j]] = [arr[j], arr[i]];
-    //     }
-    // }
-
-    /**
-     * 
-     * @param {card} - menu card 
+     *
+     * @param {card} - menu card
      */
     onCardClick(card) {
+        const productData = card.getItemData();
+        this.productPage.show(productData);
         StorageManager.addItem(card.getTitle(), card.getPrice());
     }
 
@@ -100,6 +91,11 @@ export default class MenuManager {
         );
         const container = this.paginator.createButtons();
         this.menu.parentElement.appendChild(container);
+    }
+
+    updatePageParameter(page) {
+        this.url.searchParams.set("page", page + 1);
+        window.history.replaceState({}, "", this.url);
     }
 
     showPage(page) {
@@ -114,6 +110,8 @@ export default class MenuManager {
 
         this.paginator.updateButtons();
         this.togglePagination();
+
+        this.updatePageParameter(page);
     }
 
     togglePagination() {
@@ -142,11 +140,13 @@ export default class MenuManager {
 
         const res = await fetch(this.apiUrl);
         const data = await res.json();
+        console.log("Ответ API:", data, Array.isArray(data), this.apiUrl.href);
         this.deleteApiUrlHistory();
         return data;
     }
 
     deleteApiUrlHistory() {
+        this.apiUrl.searchParams.delete("page");
         this.apiUrl.searchParams.delete("title");
         this.apiUrl.searchParams.delete("category");
     }
@@ -168,9 +168,7 @@ export default class MenuManager {
     addEventListeners() {
         const debouncedUpdate = this.debounce(() => this.updateCardsAndPagination(), 500);
         this.search.addEventListener("input", debouncedUpdate);
-        this.categoryCheckboxes.forEach(chk =>
-            chk.addEventListener("change", debouncedUpdate)
-        );
+        this.categoryCheckboxes.forEach(chk => chk.addEventListener("change", debouncedUpdate));
     }
 
     debounce(func, delay) {

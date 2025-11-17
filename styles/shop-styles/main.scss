@@ -164,7 +164,7 @@ button:disabled {
 
     .menu {
         margin: $margin-between-sections 0;
-        
+
         // Layout container
         .inner {
             @include flex-center;
@@ -214,6 +214,74 @@ button:disabled {
         }
 
         .card {
+
+            // card page
+            &__page {
+                font-family: $helvetica;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+                margin: 0 20px;
+                box-shadow: 4px 4px 36px 0px rgba(34, 60, 80, 0.2);
+                border-radius: 10px;
+                padding: 40px;
+
+                &-right {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                }
+
+                &-info {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 20px;
+                    
+                }
+
+                &-btn-wrapper {
+                    display: flex;
+                    margin-bottom: 20px;
+                }
+
+                .back-btn {
+                    margin-bottom: 40px;
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    padding: 15px;
+                    border-radius: 10px;
+                    background-color: $gray6;
+                    color: black;
+                    transition: $transition;
+                    &:hover {
+                        background-color: $gray5;
+                    }
+                }
+                
+                &-title {
+                    font-weight: 600;
+                    color: $primary-color;
+                    font-size: 40px;
+                }
+
+                &-price {
+                    font-size: 30px;
+                }
+
+                &-old-price {
+                    
+                } 
+
+
+                &-img {
+                    width: 550px;
+                    height: 500px;
+                    border-radius: 10px;
+                }
+            }
+            
             &__img {
                 padding-bottom: 8px;
             }

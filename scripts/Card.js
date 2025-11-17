@@ -5,7 +5,6 @@ export default class Card {
         this.item = item;
         this.element = this.createCardElement();
     }
-
     createCardElement() {
         const card = document.createElement("div");
         card.className = "menu__card";
@@ -17,14 +16,21 @@ export default class Card {
           <h4 class="card__title">${this.item.title}</h4>
           <div class="card__prices">
             <h4 class="card__price">$${this.item.price}</h4>
-            ${this.item.oldPrice ? `<h4 class="card__price crossed-out">$${this.item.oldPrice}</h4>` : ""}
+            ${
+                this.item.oldPrice
+                    ? `<h4 class="card__price crossed-out">$${this.item.oldPrice}</h4>`
+                    : ""
+            }
           </div>
           `;
         return card;
     }
-
     addListener(callback) {
         this.element.addEventListener("click", () => callback(this));
+    }
+
+    getItemData() {
+        return this.item;
     }
 
     getTitle() {
@@ -32,6 +38,14 @@ export default class Card {
     }
 
     getPrice() {
-        return `$${this.item.price}`;
+        return this.item.price;
+    }
+
+    getId() {
+        return this.item.id;
+    }
+
+    getDesc() {
+        return this.item.description;
     }
 }

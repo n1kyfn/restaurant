@@ -274,6 +274,58 @@ button:disabled {
   display: flex;
   flex-direction: column;
 }
+.main .menu .card__page {
+  font-family: Arial, Helvetica, sans-serif;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  margin: 0 20px;
+  box-shadow: 4px 4px 36px 0px rgba(34, 60, 80, 0.2);
+  border-radius: 10px;
+  padding: 40px;
+}
+.main .menu .card__page-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.main .menu .card__page-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.main .menu .card__page-btn-wrapper {
+  display: flex;
+  margin-bottom: 20px;
+}
+.main .menu .card__page .back-btn {
+  margin-bottom: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #F2F2F2;
+  color: black;
+  transition: all 0.4s ease-in-out;
+}
+.main .menu .card__page .back-btn:hover {
+  background-color: #E0E0E0;
+}
+.main .menu .card__page-title {
+  font-weight: 600;
+  color: #FF9F0D;
+  font-size: 40px;
+}
+.main .menu .card__page-price {
+  font-size: 30px;
+}
+.main .menu .card__page-img {
+  width: 550px;
+  height: 500px;
+  border-radius: 10px;
+}
 .main .menu .card__img {
   padding-bottom: 8px;
 }

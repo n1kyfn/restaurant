@@ -1,6 +1,7 @@
 "use strict";
 
 import MenuManager from "./MenuManager.js";
+import Card from "./Card.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     new MenuManager(
@@ -9,4 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "#menu__search-input",
         ".menu__category input[type=checkbox]"
     );
+
+    new Card().showCardInformation()
 });
