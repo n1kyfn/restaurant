@@ -2,31 +2,39 @@
 
 import Card from "./Card.js";
 import Paginator from "./Paginator.js";
-import StorageManager from "./StorageManager.js";
 import ProductPage from "./ProductPage.js";
+import { CARDS_API_URL } from "./variables.js";
 
 export default class MenuManager {
     /**
      *
-     * @param {menuSelector} - ".menu__cards"
-     * @param {loaderSelector} - ".loader"
-     * @param {searchSelector} - "#menu__search-input"
-     * @param {categorySelector} - ".menu__category input[type=checkbox]"
+     * @param {*} menuSelector - ".menu__cards"
+     * @param {*} loaderSelector - ".loader"
+     * @param {*} searchSelector - "#menu__search-input"
+     * @param {*} categorySelector - ".menu__category input[type=checkbox]"
+     * @param {*} sortSelector - "#selector" 
+     * @param {*} priceFilterSelector - ".price-filter"
      */
-    constructor(menuSelector, loaderSelector, searchSelector, categorySelector) {
+    constructor(menuSelector, loaderSelector, searchSelector, categorySelector, sortSelector, priceFilterSelector) {
         this.menu = document.querySelector(menuSelector);
         this.loading = document.querySelector(loaderSelector);
         this.search = document.querySelector(searchSelector);
         this.categoryCheckboxes = document.querySelectorAll(categorySelector);
+        this.sortSelector = document.querySelector(sortSelector);
+
+        this.priceFilter = document.querySelector(priceFilterSelector);
+        this.minPriceInput = document.querySelector("#minPrice");
+        this.maxPriceInput = document.querySelector("#maxPrice");
+
         this.productPage = new ProductPage();
         this.itemsPerPage = 15;
         this.currentPage = 0;
         this.cards = [];
         this.filteredCards = [];
-        this.paginator = undefined;
+        this.paginator = null;
 
         this.url = new URL(window.location.href);
-        this.apiUrl = new URL("https://6904539d6b8dabde4963350b.mockapi.io/api/menu-items");
+        this.apiUrl = new URL(CARDS_API_URL);
 
         this.init();
     }
@@ -34,6 +42,11 @@ export default class MenuManager {
     async init() {
         try {
             await this.updateCardsAndPagination();
+
+            const productId = this.url.searchParams.get("product");
+            const card = this.cards.find(c => c.getItemData().id == productId);
+            if (card) this.openCard(card);
+
             this.addEventListeners();
         } catch (err) {
             this.loading.style.display = "none";
@@ -52,37 +65,42 @@ export default class MenuManager {
 
     async updateCardsAndPagination() {
         const filteredData = await this.filterSearchAndCategory();
+
+        if (!filteredData || filteredData.length === 0) {
+            this.showNoResultsMessage();
+            return;
+        }
+
         this.hideNoResultsMessage();
         this.menu.innerHTML = "";
         this.cards = filteredData.map(item => {
             const card = new Card(item);
-            card.addListener(() => this.onCardClick(card));
+            card.addListener(() => this.openCard(card));
             this.menu.appendChild(card.element);
             return card;
         });
-            
+
         this.filteredCards = [...this.cards];
 
         this.currentPage = 0;
 
-        if (this.paginator && this.paginator.container) {
+        if (this.paginator?.container) {
             this.paginator.container.remove();
         }
 
         this.createPaginator();
         this.showPage(this.currentPage);
-
         this.loading.style.display = "none";
     }
 
-    /**
-     *
-     * @param {card} - menu card
-     */
-    onCardClick(card) {
+    openCard(card) {
         const productData = card.getItemData();
+        if (!this.url.href.includes("product")) {
+            this.url.searchParams.append("product", productData.id);
+        }
+        history.replaceState({}, "", this.url);
+
         this.productPage.show(productData);
-        StorageManager.addItem(card.getTitle(), card.getPrice());
     }
 
     createPaginator() {
@@ -104,21 +122,22 @@ export default class MenuManager {
         const end = start + this.itemsPerPage;
 
         this.cards.forEach(card => (card.element.style.display = "none"));
-        this.filteredCards
-            .slice(start, end)
-            .forEach(card => (card.element.style.display = "block"));
+
+        this.filteredCards.slice(start, end).forEach(card => {
+            card.element.style.display = "block";
+        });
 
         this.paginator.updateButtons();
         this.togglePagination();
-
         this.updatePageParameter(page);
     }
 
     togglePagination() {
         const pagination = document.querySelector(".pagination");
-        if (pagination)
+        if (pagination) {
             pagination.style.display =
                 this.filteredCards.length > this.itemsPerPage ? "flex" : "none";
+        }
     }
 
     getSelectedCategories() {
@@ -127,22 +146,50 @@ export default class MenuManager {
             .map(chk => chk.value.toLowerCase());
     }
 
+    getPriceRange() {
+        let minPrice = parseInt(this.minPriceInput.value);
+        let maxPrice = parseInt(this.maxPriceInput.value);
+        return { minPrice, maxPrice };
+    }
+
     async filterSearchAndCategory() {
         const term = this.search.value.trim();
         const categories = this.getSelectedCategories();
+        const { minPrice, maxPrice } = this.getPriceRange();
 
         this.apiUrl.searchParams.delete("category");
         this.apiUrl.searchParams.set("title", term);
 
-        categories.forEach(category => {
-            this.apiUrl.searchParams.append("category", category);
+        categories.forEach(cat => {
+            this.apiUrl.searchParams.append("category", cat);
         });
 
         const res = await fetch(this.apiUrl);
-        const data = await res.json();
-        console.log("Ответ API:", data, Array.isArray(data), this.apiUrl.href);
+        let data = await res.json();
+
+        data = data.filter(item => {
+            const price = parseInt(item.price);
+            return price >= minPrice && price <= maxPrice;
+        });
+
+        const sortValue = this.sortSelector.value;
+        if (sortValue === "highest") {
+            data.sort((a, b) => b.price - a.price);
+        } else if (sortValue === "lowest") {
+            data.sort((a, b) => a.price - b.price);
+        }
+
         this.deleteApiUrlHistory();
         return data;
+    }
+
+    updatePriceDisplay() {
+        const { minPrice, maxPrice } = this.getPriceRange();
+
+        const priceText = document.querySelector(".filter__price");
+        if (priceText) {
+            priceText.textContent = `From $${minPrice} to $${maxPrice}`;
+        }
     }
 
     deleteApiUrlHistory() {
@@ -152,6 +199,7 @@ export default class MenuManager {
     }
 
     showNoResultsMessage() {
+        this.loading.style.display = "none";
         if (!document.querySelector(".no-results")) {
             const msg = document.createElement("h3");
             msg.className = "no-results";
@@ -167,15 +215,40 @@ export default class MenuManager {
 
     addEventListeners() {
         const debouncedUpdate = this.debounce(() => this.updateCardsAndPagination(), 500);
+
         this.search.addEventListener("input", debouncedUpdate);
         this.categoryCheckboxes.forEach(chk => chk.addEventListener("change", debouncedUpdate));
+        this.sortSelector.addEventListener("change", debouncedUpdate);
+        this.priceFilter.addEventListener("change", debouncedUpdate)
+
+        this.minPriceInput.addEventListener("input", () => {
+            this.updatePriceDisplay();
+            if (parseInt(this.minPriceInput.value) > parseInt(this.maxPriceInput.value)) {
+                this.minPriceInput.value = this.maxPriceInput.value;
+                return;
+            }
+        });
+
+        this.maxPriceInput.addEventListener("input", () => {
+            this.updatePriceDisplay();
+            if (parseInt(this.maxPriceInput.value) < parseInt(this.minPriceInput.value)) {
+                this.maxPriceInput.value = this.minPriceInput.value;
+                return
+            }
+        });
+
+        this.updatePriceDisplay();
     }
 
+    /**
+     * @param {Function} func - функция которую нужно дебаунсить
+     * @param {number} delay - задержка в миллисекундах
+     */
     debounce(func, delay) {
         let timeoutId;
         return (...args) => {
             clearTimeout(timeoutId);
-            timeoutId = setTimeout(() => func(this, args), delay);
+            timeoutId = setTimeout(() => func.apply(this, args), delay);
         };
     }
 }

@@ -14,8 +14,7 @@
     
     <!-- scripts -->
     <script src="https://kit.fontawesome.com/219b80e1d7.js" crossorigin="anonymous"></script>
-    <script type="module" src="../scripts/index.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="../scripts/shop.js" defer></script>
 </head>
 <body>  
     
@@ -23,6 +22,9 @@
     <header class="header">
         <div class="container">
             <div class="header__block">
+                <div class="header__burger">
+                    <span></span>
+                </div>
                 <a href="#" class="header__logo">
                     Food<span>tuck</span>
                 </a>
@@ -33,7 +35,7 @@
                         <li><a href="#" class="nav__link">Blog</a></li>
                         <li><a href="#" class="nav__link">Pages</a></li>
                         <li><a href="#" class="nav__link">About</a></li>
-                        <li><a href="#" class="nav__link">Shop</a></li>
+                        <li><a href="http://127.0.0.1:5500/pages/shop.html" class="nav__link">Shop</a></li>
                         <li><a href="#" class="nav__link">Contact</a></li>
                     </ul>
                 </nav>
@@ -71,7 +73,6 @@
                     </div>
                 </div>
             </div>
-            <img src="" alt="">
         </section>
         
         <!-- menu -->
@@ -84,18 +85,19 @@
                         <div class="menu__selectors">
                             <div class="menu__selector">
                                 <h3 class="selector__type">Sort By :</h3>
-                                <select id="selector">
-                                    <option class="option" value="Newest" selected>Newest</option>
-                                    <option class="option" value="Oldest">Oldest</option>
+                                <select id="sortSelector" class="selector">
+                                    <option class="option" value="default">Default</option>
+                                    <option class="option" value="highest">Highest Price</option>
+                                    <option class="option" value="lowest">Lowest Price</option>
                                 </select>
                             </div>
                             <div class="menu__selector">
                                 <h3 class="selector__type">Show :</h3>
-                                <select id="selector">
-                                    <option class="option" value="Default" selected>Default</option>
-                                    <option class="option" value="Custom">Custom</option>
-                                    <option class="option" value="Compact">Compact</option>
-                                    <option class="option" value="Detailed">Detailed</option>
+                                <select id="showSelector" class="selector">
+                                    <option class="option" value="burger">Burgers</option>
+                                    <option class="option" value="sandwiches">Sandwiches</option>
+                                    <option class="option" value="drink">Drinks</option>
+                                    <option class="option" value="pizza">Pizza</option>
                                 </select>
                             </div>
                         </div>
@@ -175,7 +177,6 @@
                             <div class="menu__filter">
                                 <label class="filter__title">Filter By Price</label>
                                 <div class="filter__wrapper">
-                                    <span id="priceValue">text</span>
                                     <input type="range" min="0" max="100" value="0" class="filter" id="minPrice" />
                                     <input type="range" min="0" max="100" value="100" class="filter" id="maxPrice" />
                                 </div>

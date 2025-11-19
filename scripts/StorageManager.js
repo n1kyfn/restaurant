@@ -11,8 +11,8 @@ export default class StorageManager {
 
     /**
      * 
-     * @param {title} getTitle() 
-     * @param {price} getPrice()
+     * @param {*} getTitle - getting title of card in localStorage
+     * @param {*} getPrice - getting price of card in localStorage
      */
     static addItem(title, price) {
         const items = StorageManager.getItems();

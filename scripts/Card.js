@@ -1,6 +1,10 @@
 "use strict";
 
 export default class Card {
+    /**
+     * 
+     * @param {*} item - card
+     */
     constructor(item) {
         this.item = item;
         this.element = this.createCardElement();

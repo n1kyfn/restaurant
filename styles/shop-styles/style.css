@@ -147,6 +147,16 @@ button:disabled {
   background-color: #F2F2F2;
 }
 
+.selector {
+  border-radius: 7px;
+  padding: 10px 18px;
+  border: 1px solid #E0E0E0;
+  color: #BDBDBD;
+}
+.selector:hover {
+  cursor: pointer;
+}
+
 .header {
   background-color: #0D0D0D;
 }
@@ -400,6 +410,91 @@ button:disabled {
 .main .menu .card__page-btn:hover {
   background-color: #ffb43a;
 }
+.main .menu .card__page .reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border: 2px solid #FF9F0D;
+  border-radius: 10px;
+}
+.main .menu .card__page .reviews .review-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid #E0E0E0;
+  border-radius: 10px;
+}
+.main .menu .card__page .reviews .review-form__title {
+  font-size: 30px;
+}
+.main .menu .card__page .reviews .review-form input,
+.main .menu .card__page .reviews .review-form textarea {
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: 2px solid #E0E0E0;
+}
+.main .menu .card__page .reviews .review-form .review-btn {
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: #F2F2F2;
+  transition: all 0.4s ease-in-out;
+}
+.main .menu .card__page .reviews .review-form .review-btn:hover {
+  background-color: #E0E0E0;
+}
+.main .menu .card__page .reviews .review {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #F2F2F2;
+  border-radius: 10px;
+}
+.main .menu .card__page .reviews .review__header {
+  display: flex;
+  gap: 15px;
+  padding-bottom: 10px;
+}
+.main .menu .card__page .reviews .review__name {
+  font-size: 22px;
+}
+.main .menu .card__page .reviews .review__title {
+  font-size: 20px;
+}
+.main .menu .card__page .reviews .review__desc {
+  font-size: 16px;
+}
+.main .menu .card__page .reviews .review__btn {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: rgb(255, 81, 81);
+  transition: all 0.4s ease-in-out;
+}
+.main .menu .card__page .reviews .review__btn:hover {
+  background-color: rgb(255, 119, 119);
+}
+.main .menu .card__page .reviews .reviews-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.main .menu .card__page .reviews .reviews-container__empty {
+  display: flex;
+  align-self: center;
+  font-size: 24px;
+  color: rgb(255, 76, 76);
+}
+.main .menu .card__page .reviews__title {
+  display: flex;
+  align-self: center;
+  color: #FF9F0D;
+  font-size: 20px;
+}
 .main .menu .card__img {
   padding-bottom: 8px;
 }
@@ -468,15 +563,6 @@ button:disabled {
 }
 .main .menu .selector__type {
   font-size: 20px;
-}
-.main .menu #selector {
-  border-radius: 7px;
-  padding: 10px 18px;
-  border: 1px solid #E0E0E0;
-  color: #BDBDBD;
-}
-.main .menu #selector:hover {
-  cursor: pointer;
 }
 .main .menu .option {
   color: black;
