@@ -1,3 +1,5 @@
+"use strict"
+
 import { REVIEWS_API_URL } from "./variables.js";
 
 export default class ReviewApi {

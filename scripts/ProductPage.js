@@ -1,3 +1,5 @@
+"use strict";
+
 import StorageManager from "./StorageManager.js";
 import ReviewApi from "./ReviewApi.js";
 
@@ -9,13 +11,9 @@ export default class ProductPage {
         this.starPath = "../assets/icons/star.svg";
     }
 
-    init() {
-        const reviewForm = document.querySelector("#review-form");
-        if (reviewForm) {
-            reviewForm.addEventListener("submit", e => this.createReview(e));
-        }
-    }
-
+    /**
+     * @description Функция отрисовки странички информации о блюде
+     */
     show(product) {
         this.currentProduct = product;
 
@@ -33,34 +31,35 @@ export default class ProductPage {
                             <div class="card__page-info">
                                 <h2 class="card__page-title">${product.title}</h2>
                                 <div class="card__page-prices">
-                                    <h3 class="card__page-price">$${product.price}</h3>
-                                    ${
-                                        product.oldPrice
-                                            ? `<h3 class="card__page-old-price">$${product.oldPrice}</h3>`
-                                            : ""
-                                    }
+                                <h3 class="card__page-price">$${product.price}</h3>
+                                ${
+                                    product.oldPrice
+                                    ? `<h3 class="card__page-old-price">$${product.oldPrice}</h3>`
+                                    : ""
+                                }
                                 </div>
-                                <p class="card__page-desc"><b>Описание блюда:</b> <br> ${
+                                <p class="card__page-desc"><b>Description:</b> <br> ${
                                     product.description
                                 }</p>
-                                <button class="card__page-btn">Добавить в корзину  <i class="fa-solid fa-cart-shopping"></i></button>
+                                <h3 class="card__page-calories"><span>Calories:</span> ${product.calories} kcal</h3>
+                                <button class="card__page-btn">Add to Cart  <i class="fa-solid fa-cart-shopping"></i></button>
                             </div>
                         </div>
                         <div class="reviews">
                             <form class="review-form">
                                 <h2 class="review-form__title">Create Your Review</h2>
-                                <input type="number" id="review-rating" min="1" max="5">
-                                <input type="text" placeholder="Введите ваше имя..." id="review-name">
-                                <input type="text" placeholder="Введите заголовок..." id="review-title">
-                                <textarea placeholder="Введите ваш отзыв..." id="review-desc"></textarea>
-                                <button type="submit" class="review-btn">Добавить</button>
+                                <input type="number" placeholder="Enter your rating..." id="review-rating" min="1" max="5">
+                                <input type="text" placeholder="Enter your name..." id="review-name">
+                                <input type="text" placeholder="Enter header..." id="review-title">
+                                <textarea placeholder="Enter your review..." id="review-desc" max="1000"></textarea>
+                                <button type="submit" class="review-btn">Add</button>
                             </form>
                             <h2 class="reviews__title">Reviews</h2>
                             <div class="reviews-container">
     
                             </div>
                         </div>
-                        <h2>Тут что то может быть еще</h2>
+                        <h2>There might be more to it than that))</h2>
                     </div>
                 </div>
             `;
@@ -72,7 +71,6 @@ export default class ProductPage {
 
         this.menuContainer.querySelector(".back-btn").addEventListener("click", () => this.hide());
         this.menuContainer.querySelector(".card__page-btn").addEventListener("click", () => {
-            StorageManager.addItem(product.title, product.price);
             this.addToCart(product);
         });
         this.menuContainer
@@ -82,6 +80,26 @@ export default class ProductPage {
         this.loadReviews();
     }
 
+    /**
+     * @description Асинхронная функция добавления всех отзывов
+     */
+    async loadReviews() {
+        try {
+            const reviews = await ReviewApi.getAllReviews();
+            const productReviews = reviews.filter(
+                review =>
+                    review.productId === this.currentProduct.id ||
+                    review.productTitle === this.currentProduct.title
+            );
+            this.renderReviews(productReviews);
+        } catch (error) {
+            console.error("Ошибка при загрузке отзывов:", error);
+        }
+    }
+
+    /**
+     * @description Асинхронная функция создания отзыва
+     */
     async createReview(event) {
         event.preventDefault();
 
@@ -114,27 +132,29 @@ export default class ProductPage {
             reviewDesc.value = "";
 
             await this.loadReviews();
-            this.showSuccessMessage("Отзыв успешно добавлен!");
+            this.showMessage("Отзыв успешно добавлен!");
         } catch (error) {
             console.error("Ошибка при создании отзыва:", error);
-            this.showErrorMessage("Не удалось добавить отзыв");
+            this.showMessage("Не удалось добавить отзыв");
         }
     }
-
-    async loadReviews() {
+    
+    /**
+     * @description Асинхронная функция удаления отзыва
+     */
+    async deleteReview(id) {
+        if (!confirm("Вы точно хотите удалить этот отзыв?")) return;
         try {
-            const reviews = await ReviewApi.getAllReviews();
-            const productReviews = reviews.filter(
-                review =>
-                    review.productId === this.currentProduct.id ||
-                    review.productTitle === this.currentProduct.title
-            );
-            this.renderReviews(productReviews);
-        } catch (error) {
-            console.error("Ошибка при загрузке отзывов:", error);
+            await ReviewApi.deleteReview(id);
+            await this.loadReviews();
+        } catch (err) {
+            console.error("Ошибка при удалении отзыва: ", err);
         }
     }
-
+    
+    /**
+     * @description Функция отрисовки отзывов
+     */
     renderReviews(reviews) {
         const reviewsContainer = document.querySelector(".reviews-container");
 
@@ -142,7 +162,7 @@ export default class ProductPage {
 
         if (!reviews || reviews.length === 0) {
             reviewsContainer.innerHTML = `
-            <h2 class="reviews-container__empty">Пока нет отзывов для этого продукта!</h2>
+            <h2 class="reviews-container__empty">There are no reviews for this product yet!</h2>
         `;
             return;
         }
@@ -166,6 +186,9 @@ export default class ProductPage {
             .join("");
     }
 
+    /**
+     * @description Функция добавления звезд по рейтингу
+     */
     createStarRating(rating) {
         let starsHtml = "";
 
@@ -178,24 +201,16 @@ export default class ProductPage {
         return `<div class="star-rating">${starsHtml}</div>`;
     }
 
-    async deleteReview(id) {
-        if (!confirm("Вы точно хотите удалить этот отзыв?")) return;
-        try {
-            await ReviewApi.deleteReview(id);
-            await this.loadReviews();
-        } catch (err) {
-            console.error("Ошибка при удалении отзыва: ", err);
-        }
-    }
-
-    showSuccessMessage(message) {
+    /**
+     * @description Функция показа сообщения
+     */
+    showMessage(message) {
         alert(message);
     }
 
-    showErrorMessage(message) {
-        alert(message);
-    }
-
+    /**
+     * @description Функция скрытия этой страницы
+     */
     hide() {
         const url = new URL(window.location.href);
         url.searchParams.delete("product");
@@ -203,7 +218,11 @@ export default class ProductPage {
         location.reload();
     }
 
+    /**
+     * @description Функция добавления в корзину
+     */
     addToCart(product) {
+        StorageManager.addItem(product.title, product.price);
         alert(`Продукт ${product.title} добавлен в корзину!`);
     }
 }

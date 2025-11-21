@@ -1,4 +1,5 @@
-// BURGER
+"use strict"
+
 export default class BurgerMenu {
     /**
      * 
@@ -10,6 +11,10 @@ export default class BurgerMenu {
         this.menu = document.querySelector(listSelector);
         this.body = document.body;
     }
+
+    /**
+     * @description Функция добавления классов для отображения корректного burger menu
+     */
     showBurgerMenu() {
         this.burger.classList.toggle('active');
         this.menu.classList.toggle('active');

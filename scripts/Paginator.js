@@ -9,6 +9,9 @@ export default class Paginator {
         this.container = document.querySelector(".pagination");
     }
 
+    /**
+     * @description Функция отрисовки кнопок пагинации
+     */
     createButtons() {
         if (this.container) this.container.remove();
 
@@ -51,12 +54,18 @@ export default class Paginator {
         return this.container;
     }
 
+    /**
+     * @description Функция для изменения страницы меню
+     */
     changePage(page) {
         this.currentPage = page;
-        if (this.onPageChange) this.onPageChange(page);
+        if (this.onPageChange) this.onPageChange(page); 
         this.updateButtons();
     }
 
+    /**
+     * @description Функция для установления активной и не активной кнопки
+     */
     updateButtons() {
         const buttons = this.container.querySelectorAll("button");
         const totalPages = Math.ceil(this.totalItems / this.itemsPerPage);

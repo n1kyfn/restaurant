@@ -1,27 +1,27 @@
 "use strict";
 
 export default class StorageManager {
+    /**
+     * 
+     * @description Функция поиска в localStorafe MenuItems
+     */
     static getItems() {
-        return JSON.parse(localStorage.getItem("item")) || [];
-    }
-
-    static getPrices() {
-        return JSON.parse(localStorage.getItem("prices")) || [];
+        return JSON.parse(localStorage.getItem("MenuItems")) || [];
     }
 
     /**
      * 
-     * @param {*} getTitle - getting title of card in localStorage
-     * @param {*} getPrice - getting price of card in localStorage
+     * @param {*} title - Получение названия продукта
+     * @param {*} price - Получение цены продукта
+     * @description Функция добавления карточки в localStorage
      */
     static addItem(title, price) {
-        const items = StorageManager.getItems();
-        const prices = StorageManager.getPrices();
-
-        items.push(title);
-        prices.push(price);
-        
-        localStorage.setItem("items", JSON.stringify(items));
-        localStorage.setItem("prices", JSON.stringify(prices));
+        const allItems = StorageManager.getItems();
+        const productItem = {
+            title,
+            price,
+        }
+        allItems.push(productItem);
+        localStorage.setItem("MenuItems", JSON.stringify(allItems));
     }
 }

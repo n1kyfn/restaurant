@@ -5,17 +5,16 @@ import Paginator from "./Paginator.js";
 import ProductPage from "./ProductPage.js";
 import { CARDS_API_URL } from "./variables.js";
 
+
 export default class MenuManager {
-    /**
-     *
-     * @param {*} menuSelector - ".menu__cards"
-     * @param {*} loaderSelector - ".loader"
-     * @param {*} searchSelector - "#menu__search-input"
-     * @param {*} categorySelector - ".menu__category input[type=checkbox]"
-     * @param {*} sortSelector - "#selector" 
-     * @param {*} priceFilterSelector - ".price-filter"
-     */
-    constructor(menuSelector, loaderSelector, searchSelector, categorySelector, sortSelector, priceFilterSelector) {
+    constructor(
+        menuSelector,
+        loaderSelector,
+        searchSelector,
+        categorySelector,
+        sortSelector,
+        priceFilterSelector
+    ) {
         this.menu = document.querySelector(menuSelector);
         this.loading = document.querySelector(loaderSelector);
         this.search = document.querySelector(searchSelector);
@@ -39,70 +38,102 @@ export default class MenuManager {
         this.init();
     }
 
+    /**
+     * @description Асинхронная функция-сборщик и инициализатор всего на этой страничке сайта
+     */
     async init() {
+        this.showLoader();
         try {
             await this.updateCardsAndPagination();
 
             const productId = this.url.searchParams.get("product");
-            const card = this.cards.find(c => c.getItemData().id == productId);
-            if (card) this.openCard(card);
+            if (productId) {
+                const card = this.cards.find(c => c.getItemData().id == productId);
+                if (card) this.openCard(card);
+            }
 
             this.addEventListeners();
         } catch (err) {
-            this.loading.style.display = "none";
-            const problemMessage = document.createElement("div");
-            problemMessage.textContent = `Error: ${err.message}`;
-            Object.assign(problemMessage.style, {
-                display: "flex",
-                width: "900px",
-                fontSize: "30px",
-                fontFamily: "Helvetica",
-                color: "red",
-            });
-            this.menu.appendChild(problemMessage);
+            this.showErrorMessage(err);
         }
     }
 
-    async updateCardsAndPagination() {
-        const filteredData = await this.filterSearchAndCategory();
+    /**
+     * @description Функция показа загрузки
+     */
+    showLoader() {
+        this.loading.style.display = "block";
+    }
 
-        if (!filteredData || filteredData.length === 0) {
-            this.showNoResultsMessage();
-            return;
-        }
-
-        this.hideNoResultsMessage();
-        this.menu.innerHTML = "";
-        this.cards = filteredData.map(item => {
-            const card = new Card(item);
-            card.addListener(() => this.openCard(card));
-            this.menu.appendChild(card.element);
-            return card;
-        });
-
-        this.filteredCards = [...this.cards];
-
-        this.currentPage = 0;
-
-        if (this.paginator?.container) {
-            this.paginator.container.remove();
-        }
-
-        this.createPaginator();
-        this.showPage(this.currentPage);
+    /**
+     * @description Функция скрытия загрузки
+     */
+    hideLoader() {
         this.loading.style.display = "none";
     }
 
+    /**
+     * @description Асинхронная функция отрисовки всех карточек и отрисовки пагинации
+     */
+    async updateCardsAndPagination() {
+        this.showLoader();
+        try {
+            const data = await this.filterSearchAndCategory();
+
+            if (!data || data.length === 0) {
+                this.showNoResultsMessage();
+                this.hideLoader();
+                return;
+            }
+
+            this.hideNoResultsMessage();
+            this.menu.innerHTML = "";
+
+            this.cards = data.map(item => {
+                const card = new Card(item);
+                card.addListener(() => this.openCard(card));
+                this.menu.appendChild(card.element);
+                return card;
+            });
+
+            this.filteredCards = [...this.cards];
+            this.currentPage = 0;
+
+            if (this.paginator?.container) {
+                this.paginator.container.remove();
+            }
+
+            if (this.filteredCards.length > 0) {
+                this.createPaginator();
+                this.showPage(this.currentPage);
+            }
+
+            this.hideLoader();
+        } catch (error) {
+            this.hideLoader();
+            this.showNoResultsMessage();
+            if (this.paginator?.container) {
+                this.paginator.container.remove();
+                this.paginator = null;
+            }
+        }
+    }
+
+    /**
+     * @description Функция получения информации о продукте и при нажаьии ее открытии
+     */
     openCard(card) {
         const productData = card.getItemData();
         if (!this.url.href.includes("product")) {
-            this.url.searchParams.append("product", productData.id);
+            this.url.searchParams.set("product", productData.id);
         }
         history.replaceState({}, "", this.url);
-
         this.productPage.show(productData);
     }
 
+    /**
+     * @description Функция создания пагинации, обращаясь к классу
+     */
     createPaginator() {
         this.paginator = new Paginator(this.filteredCards.length, this.itemsPerPage, page =>
             this.showPage(page)
@@ -111,11 +142,17 @@ export default class MenuManager {
         this.menu.parentElement.appendChild(container);
     }
 
+    /**
+     * @description Функция добавления параметра page в ссылке
+     */
     updatePageParameter(page) {
         this.url.searchParams.set("page", page + 1);
         window.history.replaceState({}, "", this.url);
     }
 
+    /**
+     * @description Функция показа страницы, обновления кнопок и пагинации
+     */
     showPage(page) {
         this.currentPage = page;
         const start = page * this.itemsPerPage;
@@ -132,6 +169,9 @@ export default class MenuManager {
         this.updatePageParameter(page);
     }
 
+    /**
+     * @description Функция показа/скрытия кнопок пагинации
+     */
     togglePagination() {
         const pagination = document.querySelector(".pagination");
         if (pagination) {
@@ -140,86 +180,154 @@ export default class MenuManager {
         }
     }
 
+    /**
+     * @description Функция получения вубранных категорий
+     */
     getSelectedCategories() {
         return Array.from(this.categoryCheckboxes)
             .filter(chk => chk.checked)
             .map(chk => chk.value.toLowerCase());
     }
 
+    /**
+     * @description Функция получения минимальной и максимальной цены для фильтра
+     */
     getPriceRange() {
         let minPrice = parseInt(this.minPriceInput.value);
         let maxPrice = parseInt(this.maxPriceInput.value);
         return { minPrice, maxPrice };
     }
 
+    /**
+     * @description Асинхронная функция для применения всех параметров и дальнейшего получения всех карточек, какие прошли проверку
+     */
     async filterSearchAndCategory() {
         const term = this.search.value.trim();
         const categories = this.getSelectedCategories();
         const { minPrice, maxPrice } = this.getPriceRange();
 
-        this.apiUrl.searchParams.delete("category");
-        this.apiUrl.searchParams.set("title", term);
+        this.apiUrl.search = "";
 
-        categories.forEach(cat => {
-            this.apiUrl.searchParams.append("category", cat);
-        });
+        if (term) this.apiUrl.searchParams.set("title", term);
+
+
+        if (categories.length > 0) this.apiUrl.searchParams.set("category", categories.join("|"));
+
+        const sortValue = this.sortSelector.value;
+        if (sortValue === "highest") {
+            this.apiUrl.searchParams.set("sortBy", "price");
+            this.apiUrl.searchParams.set("order", "desc");
+        } else if (sortValue === "lowest") {
+            this.apiUrl.searchParams.set("sortBy", "price");
+            this.apiUrl.searchParams.set("order", "asc");
+        }
+
+        console.log(this.apiUrl.href);
 
         const res = await fetch(this.apiUrl);
+        if (!res.ok) {
+            return [];
+        }
         let data = await res.json();
 
         data = data.filter(item => {
             const price = parseInt(item.price);
-            return price >= minPrice && price <= maxPrice;
+            return (
+                (minPrice && minPrice ? price >= minPrice : true) &&
+                (maxPrice && maxPrice ? price <= maxPrice : true)
+            );
         });
 
-        const sortValue = this.sortSelector.value;
-        if (sortValue === "highest") {
-            data.sort((a, b) => b.price - a.price);
-        } else if (sortValue === "lowest") {
-            data.sort((a, b) => a.price - b.price);
-        }
-
-        this.deleteApiUrlHistory();
         return data;
     }
 
+    /**
+     * @description Функция обновления диапазона цены в фильтре
+     */
     updatePriceDisplay() {
         const { minPrice, maxPrice } = this.getPriceRange();
-
         const priceText = document.querySelector(".filter__price");
         if (priceText) {
             priceText.textContent = `From $${minPrice} to $${maxPrice}`;
         }
     }
 
-    deleteApiUrlHistory() {
-        this.apiUrl.searchParams.delete("page");
-        this.apiUrl.searchParams.delete("title");
-        this.apiUrl.searchParams.delete("category");
-    }
-
+    /**
+     * @description Функция показа no-results при отсутствии результатов
+     */
     showNoResultsMessage() {
-        this.loading.style.display = "none";
-        if (!document.querySelector(".no-results")) {
-            const msg = document.createElement("h3");
-            msg.className = "no-results";
-            msg.textContent = "No results found";
-            this.menu.appendChild(msg);
+        this.hideLoader();
+        this.menu.innerHTML = "";
+
+        const msg = document.createElement("div");
+        msg.className = "no-results";
+        Object.assign(msg.style, {
+            textAlign: "center",
+            padding: "40px",
+            fontSize: "20px",
+            color: "#666",
+            width: "100%",
+        });
+
+        msg.innerHTML = `<h3>No results found</h3>`;
+
+        this.menu.appendChild(msg);
+
+        if (this.paginator?.container) {
+            this.paginator.container.remove();
+            this.paginator = null;
         }
     }
 
+    /**
+     * @description Функция создания элемента ошибки
+     */
+    createErrorElement(error) {
+        const problemMessage = document.createElement("div");
+        problemMessage.textContent = `Error: ${error.message}`;
+        Object.assign(problemMessage.style, {
+            display: "flex",
+            width: "900px",
+            fontSize: "30px",
+            fontFamily: "Helvetica",
+            color: "red",
+            justifyContent: "center",
+            padding: "20px",
+        });
+        return problemMessage;
+    }
+
+    /**
+     * @description Функция показа ошибки
+     */
+    showErrorMessage(error) {
+        this.hideLoader();
+        this.menu.innerHTML = "";
+        this.menu.appendChild(this.createErrorElement(error));
+        if (this.paginator?.container) {
+            this.paginator.container.remove();
+            this.paginator = null;
+        }
+    }
+
+    /**
+     * @description Функция скрытия no-results при отсутствии результатов
+     */
     hideNoResultsMessage() {
         const msg = document.querySelector(".no-results");
         if (msg) msg.remove();
     }
 
+    /**
+     * @description Функция добавления обработчиков событий
+     */
     addEventListeners() {
         const debouncedUpdate = this.debounce(() => this.updateCardsAndPagination(), 500);
 
         this.search.addEventListener("input", debouncedUpdate);
         this.categoryCheckboxes.forEach(chk => chk.addEventListener("change", debouncedUpdate));
         this.sortSelector.addEventListener("change", debouncedUpdate);
-        this.priceFilter.addEventListener("change", debouncedUpdate)
+        this.priceFilter.addEventListener("change", debouncedUpdate);
 
         this.minPriceInput.addEventListener("input", () => {
             this.updatePriceDisplay();
@@ -227,28 +335,30 @@ export default class MenuManager {
                 this.minPriceInput.value = this.maxPriceInput.value;
                 return;
             }
+            debouncedUpdate();
         });
 
         this.maxPriceInput.addEventListener("input", () => {
             this.updatePriceDisplay();
             if (parseInt(this.maxPriceInput.value) < parseInt(this.minPriceInput.value)) {
                 this.maxPriceInput.value = this.minPriceInput.value;
-                return
+                return;
             }
+            debouncedUpdate();
         });
-
-        this.updatePriceDisplay();
     }
 
     /**
      * @param {Function} func - функция которую нужно дебаунсить
      * @param {number} delay - задержка в миллисекундах
+     *
+     * @description Функция для задержки выполнения функции
      */
     debounce(func, delay) {
         let timeoutId;
         return (...args) => {
             clearTimeout(timeoutId);
-            timeoutId = setTimeout(() => func.apply(this, args), delay);
+            timeoutId = setTimeout(() => func(this, args), delay);
         };
     }
 }

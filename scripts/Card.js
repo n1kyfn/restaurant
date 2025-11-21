@@ -3,12 +3,17 @@
 export default class Card {
     /**
      * 
-     * @param {*} item - card
+     * @param {*} item - карточка
      */
     constructor(item) {
         this.item = item;
         this.element = this.createCardElement();
     }
+
+    /**
+     * 
+     * @description Функция создания карточки
+     */
     createCardElement() {
         const card = document.createElement("div");
         card.className = "menu__card";
@@ -29,27 +34,12 @@ export default class Card {
           `;
         return card;
     }
+
     addListener(callback) {
         this.element.addEventListener("click", () => callback(this));
     }
 
     getItemData() {
         return this.item;
-    }
-
-    getTitle() {
-        return this.item.title;
-    }
-
-    getPrice() {
-        return this.item.price;
-    }
-
-    getId() {
-        return this.item.id;
-    }
-
-    getDesc() {
-        return this.item.description;
     }
 }

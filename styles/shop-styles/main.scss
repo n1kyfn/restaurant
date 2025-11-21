@@ -297,14 +297,12 @@ button:disabled {
                 }
 
                 &-right {
-                    display: flex;
-                    flex-direction: column;
+                    @include column;
                     align-items: flex-end;
                 }
 
                 &-info {
-                    display: flex;
-                    flex-direction: column;
+                    @include column;
                     align-items: flex-start;
                     gap: 20px;
                 }
@@ -340,8 +338,16 @@ button:disabled {
                     gap: 20px;
                     align-items: baseline;
                 }
+
                 &-price {
                     font-size: 30px;
+                }
+
+                &-calories {
+                    font-size: 20px;
+                    span {
+                        color: $primary-color;
+                    }
                 }
 
                 &-old-price {
@@ -368,85 +374,130 @@ button:disabled {
                 }
 
                 .reviews {
-                    @include column;
-                    gap: 20px;
-                    padding: 20px;
+                    margin-top: 48px;
+                    padding: 26px 22px;
                     border: 2px solid $primary-color;
-                    border-radius: 10px;
+                    border-radius: 14px;
+                    @include column;
+                    align-items: center;
+                    gap: 26px;
+
                     .review-form {
-                        padding: 20px;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        gap: 10px;
+                        background: #fff;
+                        border-radius: 13px;
+                        padding: 24px 16px;
                         border: 2px solid $gray5;
-                        border-radius: 10px;
+                        width: 100%;
+                        max-width: 400px;
+                        @include column;
+                        align-items: center;
+                        gap: 14px;
+
                         &__title {
-                            font-size: 30px;
+                            font-size: 28px;
+                            color: $primary-color;
+                            font-weight: 600;
+                            margin-bottom: 10px;
                         }
                         input,
                         textarea {
+                            width: 90%;
                             border-radius: 10px;
-                            padding: 10px 20px;
+                            padding: 10px 18px;
                             border: 2px solid $gray5;
+                            font-size: 17px;
+                            transition: border $transition;
+                            box-shadow: 0 2px 12px 0 rgba(34, 60, 80, 0.07);
+
+                            &:focus {
+                                border-color: $primary-color;
+                                outline: none;
+                            }
+                        }
+                        textarea {
+                            min-height: 70px;
+                            resize: vertical;
                         }
                         .review-btn {
-                            cursor: pointer;
-                            padding: 10px 15px;
+                            background: $primary-color;
+                            color: #fff;
+                            border: none;
                             border-radius: 10px;
-                            background-color: $gray6;
-                            transition: $transition;
-                            &:hover {
-                                background-color: $gray5;
-                            }
-                        }
-                    }
-                    .review {
-                        @include column;
-                        align-items: center;
-                        padding: 20px;
-                        background-color: $gray6;
-                        border-radius: 10px;
-                        &__header {
-                            display: flex;
-                            gap: 15px;
-                            padding-bottom: 10px;
-                        }
-                        &__name {
-                            font-size: 22px;
-                        }
-                        &__title {
-                            font-size: 20px;
-                        }
-                        &__desc {
-                            font-size: 16px;
-                        }
-                        &__btn {
+                            padding: 10px 18px;
+                            font-size: 18px;
+                            font-weight: 600;
                             cursor: pointer;
-                            padding: 5px 10px;
-                            border-radius: 10px;
-                            background-color: rgb(255, 81, 81);
                             transition: $transition;
+
                             &:hover {
-                                background-color: rgb(255, 119, 119);
+                                background: #ffc971;
                             }
-                        }
-                    }
-                    .reviews-container {
-                        @include column;
-                        gap: 20px;
-                        &__empty {
-                            display: flex;
-                            align-self: center;
-                            font-size: 24px;
-                            color: rgb(255, 76, 76);
                         }
                     }
                     &__title {
-                        display: flex;
-                        align-self: center;
                         color: $primary-color;
-                        font-size: 20px;
+                        font-size: 22px;
+                        font-weight: 700;
+                        align-self: center;
+                        margin: 8px 0;
+                    }
+
+
+                    .reviews-container {
+                        @include column;
+                        gap: 16px;
+
+                        &__empty {
+                            align-self: center;
+                            font-size: 22px;
+                            color: rgb(255, 76, 76);
+                            margin-top: 14px;
+                        }
+
+                        .review {
+                            background: #fff;
+                            border-radius: 12px;
+                            padding: 18px 14px;
+                            box-shadow: 0 2px 16px 0 rgba(34, 60, 80, 0.09);
+                            @include column;
+                            align-items: flex-start;
+                            gap: 8px;
+
+                            &__header {
+                                display: flex;
+                                gap: 12px;
+                                align-items: center;
+
+                            }
+                            &__name {
+                                font-size: 19px;
+                                font-weight: 600;
+                                color: $primary-color;
+                            }
+                            &__title {
+                                font-size: 17px;
+                                font-weight: 500;
+                                margin-top: 3px;
+                            }
+                            &__desc {
+                                font-size: 16px;
+                                margin-bottom: 8px;
+                            }
+                            &__btn {
+                                background: rgb(255, 81, 81);
+                                color: #fff;
+                                border: none;
+                                border-radius: 8px;
+                                padding: 7px 14px;
+                                font-size: 15px;
+                                cursor: pointer;
+                                transition: $transition;
+
+                                &:hover {
+                                    background: rgb(255, 119, 119);
+                                }
+                            }
+                        }
                     }
                 }
             }
